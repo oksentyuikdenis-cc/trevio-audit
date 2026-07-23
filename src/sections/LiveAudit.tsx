@@ -19,6 +19,19 @@ import './LiveAudit.css'
 const { liveAudit } = HEADINGS
 
 /**
+ * Scope, in the words a product owner schedules with.
+ *
+ * The stored values are terse enough to be a type; these are what a reader
+ * needs. "Days of work" is a size, not a promise — the corpus cannot support
+ * an estimate, and the label says which bucket rather than how long.
+ */
+const EFFORT: Record<string, string> = {
+  setting: 'a setting',
+  fix: 'a fix',
+  rework: 'a rework',
+}
+
+/**
  * Section five. Formerly the reserved 3D slot.
  *
  * The slot was built to answer three questions before a scene was written:
@@ -310,8 +323,35 @@ export function LiveAudit() {
                 borrows credibility it has not earned. */}
             {lead.recommendation && (
               <div className="audit__advice">
-                <p className="audit__advice-label">Suggested action — judgement, not measurement</p>
-                <p className="audit__advice-text">{lead.recommendation}</p>
+                <p className="audit__advice-label">
+                  Recommendation — judgement, not measurement
+                  {/* Scope, in the same breath as the advice. A setting and a
+                      rework are scheduled by different people, and advice that
+                      does not say which is advice that sits in a backlog
+                      untriaged — which is the same as not giving it. */}
+                  <span className={`audit__effort audit__effort--${lead.recommendation.effort}`}>
+                    {EFFORT[lead.recommendation.effort]}
+                  </span>
+                </p>
+
+                <dl className="audit__advice-body">
+                  {/* The order is the argument: what it costs to leave it, then
+                      what to do, then why that and not the obvious thing, then
+                      how you would know it worked. A finding plus an action
+                      reads as a bug report; the sentence in between is what
+                      gets the work scheduled. */}
+                  <dt>Why it matters</dt>
+                  <dd>{lead.recommendation.cost}</dd>
+
+                  <dt>Do this</dt>
+                  <dd className="audit__advice-action">{lead.recommendation.action}</dd>
+
+                  <dt>Why this and not the obvious fix</dt>
+                  <dd>{lead.recommendation.rationale}</dd>
+
+                  <dt>You will know it worked when</dt>
+                  <dd>{lead.recommendation.signal}</dd>
+                </dl>
               </div>
             )}
 

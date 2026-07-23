@@ -174,11 +174,64 @@
 }
 
 .audit__advice-label {
-  margin-bottom: 4px;
+  display: flex;
+  gap: var(--mur-sp-2);
+  align-items: baseline;
+  margin-bottom: var(--mur-sp-2);
   color: var(--mur-accent);
   font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+/* Scope, beside the label rather than buried in the text. A setting and a
+   rework are scheduled by different people, and that is the first thing a
+   product owner looks for. */
+.audit__effort {
+  padding: 1px 8px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.audit__effort--rework {
+  color: var(--mur-text);
+}
+
+/* A definition list, because that is what this is: four questions a reader
+   arrives with, each answered once. Laid out as label-above-answer rather
+   than side by side — the answers are sentences, and a narrow value column
+   would set them as ragged slivers on a phone. */
+.audit__advice-body {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+}
+
+.audit__advice-body dt {
+  margin-top: var(--mur-sp-2);
+  color: var(--mur-muted);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.audit__advice-body dt:first-child {
+  margin-top: 0;
+}
+
+.audit__advice-body dd {
+  margin: 0;
+  color: var(--mur-text);
+  font-size: var(--mur-t-small);
+  line-height: 1.55;
+}
+
+/* The one line an engineer is meant to act on. */
+.audit__advice-action {
+  font-weight: var(--mur-fw-semi);
 }
 
 .audit__advice-text {

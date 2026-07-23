@@ -43,7 +43,24 @@ export interface Insight {
    * advice — the live section carries recommendations, and labels them as
    * judgement rather than measurement.
    */
-  recommendation?: string
+  recommendation?: Recommendation
+}
+
+/**
+ * Structured advice, mirroring `trevio-audit-server/types.ts`.
+ *
+ * Four fields rather than a sentence because a product owner needs four
+ * separate things and prose lets the weakest one hide: what it costs to leave
+ * this alone, what to change, why that rather than the obvious fix, and what
+ * would show it worked. `effort` is the field that decides whether anything
+ * gets scheduled — a setting and a rework are handled by different people.
+ */
+export interface Recommendation {
+  cost: string
+  action: string
+  effort: 'setting' | 'fix' | 'rework'
+  rationale: string
+  signal: string
 }
 
 export const INSIGHTS: Insight[] = [
