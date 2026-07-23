@@ -1,0 +1,164 @@
+/*
+ * 56px, sticky, translucent with a blur, and deliberately NO border-bottom.
+ * The bar separates from the page by blur alone; a rule under it is the
+ * single fastest way to make this design read as a generic SaaS template.
+ */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--mur-nav-h);
+  background: rgb(241 240 235 / 55%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  /* Only the fill transitions. The blur radius is left alone deliberately —
+     animating backdrop-filter re-runs the blur every frame over the full bar
+     width and is the one cheap-looking effect that is genuinely expensive. */
+  transition: background-color var(--mo-base) var(--mo-ease);
+}
+
+/* Firms up once body text starts passing underneath. See Nav.tsx. */
+.nav.is-condensed {
+  background: rgb(241 240 235 / 88%);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--mur-sp-4);
+  height: 100%;
+}
+
+/* Full bar height so the brand link is a comfortable target, not a 24px
+   sliver the size of the wordmark itself. */
+.nav__brand {
+  display: flex;
+  align-items: center;
+  height: var(--mur-nav-h);
+  text-decoration: none;
+  color: var(--mur-ink);
+  margin-right: auto;
+}
+
+/*
+ * The wordmark ships filled #F5F4F1 for dark backgrounds. Painting it as a
+ * mask rather than an <img> means the colour comes from `currentColor`, so
+ * the same file works on paper and on the dark block without a second asset.
+ */
+.nav__wordmark {
+  width: 84px;
+  height: 24px;
+  background-color: currentColor;
+  mask: var(--wordmark) no-repeat left center / contain;
+  -webkit-mask: var(--wordmark) no-repeat left center / contain;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--mur-sp-4);
+  list-style: none;
+  padding: 0;
+}
+
+.nav__link {
+  font-size: var(--mur-t-small);
+  color: var(--mur-text-body);
+  text-decoration: none;
+}
+
+.nav__link:hover {
+  color: var(--mur-ink);
+}
+
+.nav__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--mur-sp-2);
+}
+
+.nav__toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--mur-line);
+  border-radius: var(--mur-r-pill);
+  color: var(--mur-ink);
+  cursor: pointer;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 860px) {
+  .nav__links,
+  .nav__cta {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav.is-open .nav__links,
+  .nav.is-open .nav__cta {
+    display: flex;
+  }
+
+  .nav.is-open {
+    height: auto;
+    padding-bottom: var(--mur-sp-4);
+  }
+
+  /*
+   * Open, the bar becomes three stacked rows: [brand · close], links, CTA.
+   *
+   * DOM order puts the toggle last, so without the explicit `order` it wraps
+   * to the bottom and the close button lands underneath the CTA — nowhere
+   * near where the user just tapped to open it. The 100% bases force links
+   * and CTA onto rows of their own so the first row stays brand + close.
+   */
+  .nav.is-open .nav__inner {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding-top: var(--mur-sp-2);
+  }
+
+  .nav.is-open .nav__brand {
+    order: 1;
+    height: var(--mur-nav-h);
+  }
+
+  .nav.is-open .nav__toggle {
+    order: 2;
+    margin-top: calc((var(--mur-nav-h) - 40px) / 2);
+  }
+
+  .nav.is-open .nav__links {
+    order: 3;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--mur-sp-3);
+    margin: 0;
+    padding-block: var(--mur-sp-3);
+  }
+
+  .nav.is-open .nav__link {
+    font-size: var(--mur-t-body);
+    color: var(--mur-ink);
+  }
+
+  .nav.is-open .nav__cta {
+    order: 4;
+    flex-basis: 100%;
+  }
+
+  .nav.is-open .nav__cta .btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,52 @@
+/*
+ * Native <details>. An accordion built from buttons and state would need
+ * keyboard handling, aria-expanded and focus management written by hand, and
+ * the browser already does all three correctly.
+ */
+
+.faq__list {
+  max-width: 760px;
+  margin: 0;
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--mur-line-soft);
+}
+
+.faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--mur-sp-3);
+  padding-block: var(--mur-sp-4);
+  cursor: pointer;
+  list-style: none;
+  font-size: 18px;
+  font-weight: var(--mur-fw-medium);
+}
+
+/* Safari still paints the disclosure triangle without this. */
+.faq__q::-webkit-details-marker {
+  display: none;
+}
+
+.faq__sign {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  color: var(--mur-text-body);
+  /* Not inside the hover block in motion.css: this is the open/closed state,
+     which has to animate on touch too, where there is no hover at all. */
+  transition: transform var(--mo-base) var(--mo-ease);
+}
+
+.faq__item[open] .faq__sign {
+  transform: rotate(45deg);
+}
+
+.faq__a {
+  max-width: 62ch;
+  padding-bottom: var(--mur-sp-4);
+  color: var(--mur-text-body);
+  text-wrap: pretty;
+}

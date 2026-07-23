@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "productName": "Trenitalia",
+    "volumeTotal": 370,
+    "itemsRead": 773,
+    "dropped": [
+      {
+        "reason": "older than 240 days",
+        "count": 354
+      },
+      {
+        "reason": "too short to carry a claim",
+        "count": 49
+      }
+    ],
+    "windowDays": 236,
+    "generatedAt": "2026-07-22T07:44:34.896Z",
+    "mode": "cached",
+    "model": "Mistral mistral-large-latest · EU (Paris)"
+  },
+  "sources": [
+    {
+      "id": "googleplay",
+      "name": "Google Play reviews",
+      "detail": "Android",
+      "share": 0.6297
+    },
+    {
+      "id": "appstore",
+      "name": "App Store reviews",
+      "detail": "iOS",
+      "share": 0.3703
+    }
+  ],
+  "clusters": [
+    {
+      "id": "payment-failures-and-duplicate-charges",
+      "label": "Payments debited but tickets not issued",
+      "weight": 0.1378,
+      "sentiment": "negative",
+      "promoted": true
+    },
+    {
+      "id": "login-and-authentication-failures",
+      "label": "Persistent login and authentication errors",
+      "weight": 0.073,
+      "sentiment": "negative",
+      "promoted": true
+    },
+    {
+      "id": "app-crashes-and-performance-issues",
+      "label": "Frequent crashes and slow performance",
+      "weight": 0.0973,
+      "sentiment": "negative",
+      "promoted": true
+    },
+    {
+      "id": "ticket-and-reservation-management-issues",
+      "label": "Tickets disappearing or not syncing",
+      "weight": 0.0892,
+      "sentiment": "negative",
+      "promoted": false
+    },
+    {
+      "id": "language-and-accessibility-barriers",
+      "label": "Language settings and accessibility issues",
+      "weight": 0.0324,
+      "sentiment": "negative",
+      "promoted": false
+    },
+    {
+      "id": "loyalty-and-discount-issues",
+      "label": "Loyalty points and discounts not applying",
+      "weight": 0.0189,
+      "sentiment": "negative",
+      "promoted": false
+    },
+    {
+      "id": "positive-experiences-with-recent-fixes",
+      "label": "Positive experiences after recent fixes",
+      "weight": 0.0676,
+      "sentiment": "positive",
+      "promoted": false
+    },
+    {
+      "id": "real-time-train-status-inaccuracies",
+      "label": "Real-time train status inaccuracies",
+      "weight": 0.0351,
+      "sentiment": "negative",
+      "promoted": false
+    }
+  ],
+  "insights": [
+    {
+      "id": "payment-system-failures-lead-to-financial-losses",
+      "title": "Payment processing failures cause financial losses and erode trust.",
+      "scope": "51 of 370 reviews · 102 days · 6 app versions",
+      "summary": "A recurring issue involves payments being debited from users' accounts without tickets being issued, leaving travelers stranded or forced to repurchase tickets. Reviewers describe funds being deducted multiple times for the same transaction, with no resolution or communication from customer support. The problem persists across payment methods, including Apple Pay, PayPal, and credit cards, suggesting a systemic failure in the payment confirmation and ticket issuance pipeline. Users report losing loyalty points and discounts due to these failures, compounding frustration. The lack of immediate refunds or clear error messaging exacerbates the perception of financial mismanagement.",
+      "impact": [
+        {
+          "value": "51",
+          "label": "reviews"
+        },
+        {
+          "value": "94%",
+          "label": "rated 1 star"
+        },
+        {
+          "value": "v13.100.0",
+          "label": "earliest in window"
+        }
+      ],
+      "evidence": [
+        {
+          "name": "GI",
+          "quote": "Acquisto il biglietto su app il pagamento viene effettuato ma il biglietto sulla mail non arriva e su app non esiste. Prima di salire sul treno chiedo informazioni agli assistenti…",
+          "source": "App Store · 2026-06-04 · v13.300.1"
+        },
+        {
+          "name": "LE",
+          "quote": "L’app di Trenitalia era una delle poche cose che funzionava decentemente. L’hanno aggiornata e adesso è completamente inutilizzabile. Schermate tutt’altro che intuitive, fasi di…",
+          "source": "App Store · 2026-06-03 · v13.300.1"
+        },
+        {
+          "name": "MX",
+          "quote": "Ho acquistato un biglietto, i soldi sono stati sottratti dal mio conto ma senza biglietto. Ancora devo ricevere il rimborso",
+          "source": "App Store · 2026-07-05 · v13.400.0"
+        }
+      ],
+      "recommendation": "Implement a real-time payment verification system that only debits funds after confirming ticket issuance. Introduce an automatic rollback mechanism for failed transactions and ensure loyalty points are preserved during payment retries."
+    },
+    {
+      "id": "app-instability-undermines-reliability-for-time-sensitive-travel",
+      "title": "Frequent crashes and slow performance make the app unreliable for time-sensitive travel.",
+      "scope": "36 of 370 reviews · 81 days · 7 app versions",
+      "summary": "The app is described as crashing during critical tasks such as ticket purchases, real-time train status checks, and accessing saved journeys. Users report that the app freezes, displays internal server errors, or restarts unexpectedly, often at the final step of a transaction. Performance issues are exacerbated by slow loading times, with some users waiting several minutes for basic functions like search or ticket display. The instability is particularly problematic for travelers in transit, who rely on the app for last-minute ticket purchases or updates. Reviewers note that crashes occur more frequently on certain devices or after recent updates, suggesting inadequate testing across platforms. The unreliability forces users to revert to physical ticket counters, undermining the app’s purpose as a digital travel tool.",
+      "impact": [
+        {
+          "value": "36",
+          "label": "reviews"
+        },
+        {
+          "value": "75%",
+          "label": "rated 1 star"
+        },
+        {
+          "value": "v13.200.0",
+          "label": "earliest in window"
+        }
+      ],
+      "evidence": [
+        {
+          "name": "DA",
+          "quote": "The version that was updated in May 2026 or end of April crashes every step on the way and doesn’t work properly",
+          "source": "App Store · 2026-05-03 · v13.200.4"
+        },
+        {
+          "name": "AR",
+          "quote": "E niente, continua a funzionare una volta su venti; le altre, appare un inutile e fastidioso messaggio che invita ad aggiornare l’App (cosa impossibile, perché è già aggiornata).…",
+          "source": "App Store · 2026-07-06 · v13.400.0"
+        },
+        {
+          "name": "EC",
+          "quote": "dopo l’ultimo aggiornamento per prendere un biglietto ci impiego mezz’ora perché ogni volta da errore di server, si blocca e mi fa tornare indietro. Una persona per una operazione…",
+          "source": "App Store · 2026-05-28 · v13.300.0"
+        }
+      ],
+      "recommendation": "Conduct a full performance audit to identify crash triggers, particularly during high-traffic periods. Prioritize fixes for critical paths like ticket purchase and real-time updates, and introduce a lightweight fallback mode for users with unstable connections."
+    },
+    {
+      "id": "login-authentication-breakdowns-block-core-functionality",
+      "title": "Authentication failures prevent users from accessing the app’s core functions.",
+      "scope": "27 of 370 reviews · 205 days · 9 app versions",
+      "summary": "Users report being unable to log in despite entering correct credentials, with the app frequently rejecting valid passwords or failing to sync with website logins. Password reset processes are described as broken, with reset emails not arriving or new passwords not being recognized. Some users mention being locked out after multiple failed attempts, while others highlight that the app rejects passwords containing special characters, only to later flag those same characters as invalid. The issue is not limited to new users; long-time customers also face sudden lockouts after updates, suggesting backend synchronization problems between the app and website authentication systems. This blocks access to tickets, reservations, and real-time updates, rendering the app unusable for essential travel tasks.",
+      "impact": [
+        {
+          "value": "27",
+          "label": "reviews"
+        },
+        {
+          "value": "89%",
+          "label": "rated 1 star"
+        },
+        {
+          "value": "↑4×",
+          "label": "vs. first half of window"
+        },
+        {
+          "value": "v12.1000.0",
+          "label": "earliest in window"
+        }
+      ],
+      "evidence": [
+        {
+          "name": "JW",
+          "quote": "I set up my account on the website, and using the credentials on the app does not work. Tried resetting multiple times. Useless.",
+          "source": "App Store · 2026-06-14 · v13.000.2"
+        },
+        {
+          "name": "GL",
+          "quote": "Used to love this app. Now I can’t log in. I do not use a VPN, have used both cellular and Wi-Fi, and reset my password MANY times. I can log into the website without issue, but…",
+          "source": "App Store · 2026-05-04 · v13.200.4"
+        },
+        {
+          "name": "NI",
+          "quote": "La pagina di login non reagisce quando inserisco username e password corretti e poi premo il pulsante accedi; invece, se inserisco una password sbagliata, mi segnala credenziali…",
+          "source": "App Store · 2026-06-06 · v13.000.2"
+        }
+      ],
+      "recommendation": "Overhaul the authentication system to ensure synchronization between app and website logins. Simplify password requirements and test reset flows thoroughly. Introduce a temporary bypass for verified users to access tickets during outages."
+    }
+  ]
+}

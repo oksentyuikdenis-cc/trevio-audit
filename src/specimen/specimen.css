@@ -1,0 +1,168 @@
+/* Styling for the specimen page itself. Deliberately plain — anything
+   invented here would be a design decision that never made it into the
+   system. */
+
+.spec {
+  padding-block: var(--mur-sp-6);
+}
+
+.spec__title {
+  margin-bottom: var(--mur-sp-6);
+}
+
+.spec__block {
+  padding-block: var(--mur-sp-6);
+  border-top: 1px solid var(--mur-line);
+}
+
+.spec__block-title {
+  margin-bottom: var(--mur-sp-4);
+  color: var(--mur-text-body);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Colour ---------- */
+
+.spec__swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--mur-sp-3);
+  margin: 0;
+}
+
+.spec__swatch-chip {
+  height: 72px;
+  border: 1px solid var(--mur-line);
+  border-radius: var(--mur-r-sm);
+  margin-bottom: var(--mur-sp-2);
+}
+
+.spec__swatch-name {
+  font-size: 13px;
+  font-weight: var(--mur-fw-medium);
+}
+
+.spec__swatch-hex,
+.spec__swatch-ratio {
+  color: var(--mur-text-body);
+  font-size: 12px;
+}
+
+.spec__swatch-ratio--fail {
+  color: var(--mur-accent);
+}
+
+/* ---------- Type ---------- */
+
+.spec__type-row {
+  padding-block: var(--mur-sp-4);
+  border-bottom: 1px solid var(--mur-line-soft);
+}
+
+.spec__type-meta {
+  margin-bottom: var(--mur-sp-1);
+  color: var(--mur-text-body);
+  font-size: 12px;
+}
+
+/* ---------- Bits ---------- */
+
+.spec__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--mur-sp-3);
+}
+
+.spec__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--mur-sp-3);
+  margin: 0;
+}
+
+.spec__surfaces {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--mur-sp-2);
+  margin: 0;
+}
+
+.spec__surface {
+  padding: var(--mur-sp-4);
+  border: 1px solid var(--mur-line);
+  border-radius: var(--mur-r-sm);
+  font-size: 13px;
+}
+
+.spec__radii {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mur-sp-3);
+  margin: 0;
+}
+
+.spec__radius {
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  background: var(--mur-surface-2);
+  border: 1px solid var(--mur-line);
+  font-size: 12px;
+  color: var(--mur-text-body);
+}
+
+.spec__space {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--mur-sp-3);
+  margin: 0;
+}
+
+.spec__space-bar {
+  background: var(--mur-ink);
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+
+.spec__space-label {
+  color: var(--mur-text-body);
+  font-size: 12px;
+}
+
+/* The specimen carries its own table style rather than borrowing `.cmp` from
+   the comparison section — that stylesheet ships with the landing bundle and
+   is not loaded here, so the class would resolve to nothing. */
+.spec__table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.spec__table th,
+.spec__table td {
+  padding: var(--mur-sp-2) var(--mur-sp-3) var(--mur-sp-2) 0;
+  border-bottom: 1px solid var(--mur-line-soft);
+  vertical-align: top;
+  font-size: var(--mur-t-small);
+  font-weight: var(--mur-fw-regular);
+}
+
+.spec__table thead th {
+  border-bottom-color: var(--mur-line);
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+.spec__table td:first-child {
+  font-weight: var(--mur-fw-medium);
+  white-space: nowrap;
+}
+
+.spec__table td:last-child,
+.spec__table th:last-child {
+  color: var(--mur-text-body);
+}

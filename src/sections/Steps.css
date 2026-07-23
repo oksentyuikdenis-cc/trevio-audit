@@ -1,0 +1,37 @@
+.steps__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--mur-sp-6);
+}
+
+.steps__index {
+  display: block;
+  margin-bottom: var(--mur-sp-3);
+  padding-bottom: var(--mur-sp-3);
+  border-bottom: 1px solid var(--mur-line);
+  color: var(--mur-accent);
+  font-size: var(--mur-t-small);
+}
+
+.steps__label {
+  color: var(--mur-text-body);
+  font-size: var(--mur-t-small);
+  margin-bottom: var(--mur-sp-1);
+}
+
+.steps__title {
+  margin-bottom: var(--mur-sp-2);
+}
+
+/* The third step is the argument. Everything above it is table stakes now,
+   so it gets the one piece of emphasis in the row. */
+.steps__item--last .steps__index {
+  color: var(--mur-ink);
+}
+
+@media (max-width: 860px) {
+  .steps__list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--mur-sp-5);
+  }
+}

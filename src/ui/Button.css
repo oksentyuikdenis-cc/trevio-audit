@@ -1,0 +1,79 @@
+/*
+ * Always a pill, always weight 400. Both rules come straight from the
+ * measured reference and both are load-bearing: a rectangular button or a
+ * semibold label makes the page read as a different design system.
+ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--mur-sp-1);
+  /* min-height, not height. A fixed height on a flex child collapses when
+     the row stacks on mobile, because flex-basis wins on the vertical axis. */
+  min-height: 48px;
+  padding-inline: 32px;
+  border-radius: var(--mur-r-pill);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: var(--mur-fw-regular);
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  /* Hover and press transitions live in motion.css, with every other
+     interaction on the page. */
+}
+
+.btn--sm {
+  min-height: 40px;
+  padding-inline: 20px;
+}
+
+.btn--primary {
+  background: var(--mur-ink);
+  color: var(--mur-surface-1);
+  border: 1px solid var(--mur-dark-deep);
+}
+
+.btn--primary:hover {
+  background: var(--mur-ink-warm);
+  border-color: var(--mur-ink-warm);
+}
+
+.btn--secondary {
+  /* Translucent so it picks up whichever surface it is sitting on rather
+     than punching a lighter rectangle into it. */
+  background: rgb(241 240 235 / 70%);
+  color: var(--mur-ink);
+  border: 1px solid var(--mur-line);
+}
+
+.btn--secondary:hover {
+  background: var(--mur-card);
+  border-color: var(--mur-ink-warm);
+}
+
+/* On the dark block the pair inverts: the filled button becomes the light
+   one, because ink-on-ink would disappear. */
+.surface-dark .btn--primary {
+  background: var(--mur-on-dark);
+  color: var(--mur-ink);
+  border-color: var(--mur-on-dark);
+}
+
+.surface-dark .btn--primary:hover {
+  background: #fff;
+  border-color: #fff;
+}
+
+.surface-dark .btn--secondary {
+  background: transparent;
+  color: var(--mur-on-dark);
+  border-color: rgb(232 235 230 / 35%);
+}
+
+.surface-dark .btn--secondary:hover {
+  background: rgb(232 235 230 / 8%);
+  border-color: var(--mur-on-dark);
+}

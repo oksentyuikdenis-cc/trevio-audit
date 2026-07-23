@@ -1,0 +1,77 @@
+/*
+ * The one section allowed to break the constant section rhythm — and the only
+ * place negative tracking and weight 600 appear.
+ *
+ * It has NO min-height. The previous site set `min-height: 100vh` plus generous
+ * padding, which produced an 818px hero in a 720px viewport and pushed both
+ * CTAs below the fold — the exact opposite of what a full-height hero is for.
+ * Here the hero is as tall as its content, which lands the buttons around
+ * 560px on a laptop. If you are tempted to add a viewport unit here, measure
+ * the button's boundingClientRect at 1280×720 first.
+ */
+
+.hero {
+  padding-top: 64px;
+  padding-bottom: var(--mur-section-y);
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--mur-sp-4);
+}
+
+.hero__title {
+  max-width: 16ch;
+}
+
+/* The second beat is the hit. Dropping it to its own line and letting it
+   inherit the display size is the whole typographic joke. */
+.hero__beat {
+  display: block;
+  color: var(--mur-text-body);
+}
+
+.hero__lead {
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--mur-sp-2);
+  margin-top: var(--mur-sp-2);
+}
+
+.hero__note {
+  color: var(--mur-text-body);
+}
+
+/* The channel ticker: nine names, set as running text rather than nine
+   coloured chips. Chips would be the one element on the page fighting the
+   warm-neutral band. */
+.hero__channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mur-sp-1) var(--mur-sp-3);
+  margin-top: var(--mur-sp-4);
+  padding-top: var(--mur-sp-4);
+  border-top: 1px solid var(--mur-line);
+  width: 100%;
+  max-width: var(--mur-w-inner);
+  color: var(--mur-text-body);
+  font-size: var(--mur-t-small);
+}
+
+.hero__channel {
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .hero__actions .btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,50 @@
+/*
+ * The only dark block on the page, and the entire punctuation of the design.
+ * It works because everything above it is paper — adding a second dark
+ * section anywhere higher would spend this one for nothing.
+ */
+
+.cta {
+  text-align: center;
+}
+
+.cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--mur-sp-4);
+}
+
+.cta__title {
+  max-width: 18ch;
+  color: var(--mur-on-dark);
+}
+
+.cta__lead {
+  max-width: 52ch;
+  text-align: center;
+}
+
+.cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--mur-sp-2);
+  margin-top: var(--mur-sp-2);
+}
+
+.cta__fine {
+  margin-top: var(--mur-sp-3);
+  color: var(--mur-on-dark-body);
+  font-size: 13px;
+}
+
+@media (max-width: 560px) {
+  .cta__actions {
+    width: 100%;
+  }
+
+  .cta__actions .btn {
+    width: 100%;
+  }
+}

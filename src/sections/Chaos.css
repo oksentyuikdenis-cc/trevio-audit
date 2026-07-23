@@ -1,0 +1,139 @@
+/*
+ * Nine channels with their share of inbound volume. The bar is ink on a
+ * hairline track — no per-channel colour, because nine saturated hues would
+ * be the one element on the page fighting the warm-neutral band.
+ */
+
+.chaos__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--mur-sp-6);
+  align-items: start;
+}
+
+.chaos__channels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mur-sp-2);
+  margin: 0;
+}
+
+.chaos__channel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 88px 48px;
+  align-items: center;
+  gap: var(--mur-sp-3);
+  padding-block: var(--mur-sp-1);
+  border-bottom: 1px solid var(--mur-line-soft);
+}
+
+.chaos__channel-name {
+  font-size: var(--mur-t-small);
+}
+
+.chaos__channel-detail {
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+.chaos__track {
+  height: 4px;
+  border-radius: var(--mur-r-pill);
+  background: var(--mur-line-soft);
+  overflow: hidden;
+}
+
+/*
+ * The bar is full-width and scaled, never sized.
+ *
+ * Animating `width` would put a layout pass on every frame of nine
+ * simultaneous transitions and reflow the grid row each time. `scaleX` is
+ * composited: the same nine bars cost the compositor one matrix each and
+ * never touch layout. `--mo-scale` carries the real proportion, set inline
+ * from the data — see motion.css, variant `bar`.
+ */
+.chaos__fill {
+  width: 100%;
+  height: 100%;
+  background: var(--mur-ink);
+  border-radius: inherit;
+  transform: scaleX(var(--mo-scale, 1));
+  transform-origin: left center;
+}
+
+.chaos__share {
+  text-align: right;
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+/* ---------- The counter ---------- */
+
+.chaos__stat {
+  font-size: 56px;
+  line-height: 1.05;
+  font-weight: var(--mur-fw-medium);
+  letter-spacing: -0.01em;
+}
+
+.chaos__stat-label {
+  margin-top: var(--mur-sp-1);
+  color: var(--mur-text-body);
+  font-size: var(--mur-t-small);
+}
+
+.chaos__stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mur-sp-5);
+  margin-bottom: var(--mur-sp-5);
+}
+
+/* ---------- Themes and the long tail ---------- */
+
+.chaos__themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mur-sp-1);
+  margin-top: var(--mur-sp-3);
+}
+
+.chaos__theme {
+  padding: 6px 12px;
+  border: 1px solid var(--mur-line);
+  border-radius: var(--mur-r-pill);
+  font-size: 13px;
+}
+
+.chaos__theme--promoted {
+  background: var(--mur-ink);
+  color: var(--mur-surface-1);
+  border-color: var(--mur-ink);
+}
+
+/* The 29% that never forms a theme. Stating it is the point: a tool claiming
+   to sort 100% of inbound feedback into six neat buckets is lying. */
+.chaos__tail {
+  margin-top: var(--mur-sp-4);
+  padding-top: var(--mur-sp-3);
+  border-top: 1px solid var(--mur-line);
+  color: var(--mur-text-body);
+  font-size: var(--mur-t-small);
+}
+
+@media (max-width: 900px) {
+  .chaos__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--mur-sp-5);
+  }
+
+  .chaos__stats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--mur-sp-5);
+  }
+
+  .chaos__stat {
+    font-size: 40px;
+  }
+}

@@ -1,0 +1,33 @@
+/*
+ * Depth here is a hairline and a surface shift, not a shadow. The shadow
+ * token exists for the one card that genuinely has to lift off the page —
+ * everything else separates by warmth.
+ */
+
+.card {
+  background: var(--mur-card);
+  border: 1px solid var(--mur-line);
+  border-radius: var(--mur-r-sm);
+  padding: var(--mur-sp-4);
+}
+
+/* 20px is for large cards only. On something small it stops reading as a
+   corner radius and starts reading as a pill. */
+.card--lg {
+  border-radius: var(--mur-r-lg);
+  padding: var(--mur-sp-5);
+}
+
+.card--quiet {
+  background: transparent;
+  border-color: var(--mur-line-soft);
+}
+
+.card--lift {
+  box-shadow: var(--mur-shadow-card);
+}
+
+.surface-dark .card {
+  background: rgb(232 235 230 / 4%);
+  border-color: rgb(232 235 230 / 14%);
+}

@@ -1,0 +1,28 @@
+/*
+ * One typeface, served from this repository. The site has a hard offline
+ * requirement — zero external network requests — so there is no Google Fonts
+ * link here and there must never be one. `inter.woff2` is the latin variable
+ * subset (48KB), copied out of @fontsource-variable/inter rather than
+ * imported from it, so the dependency is a build-time convenience and not
+ * something the page relies on at runtime.
+ *
+ * To regenerate after a font update:
+ *   npm install --no-save @fontsource-variable/inter
+ *   cp node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2 \
+ *      src/styles/fonts/inter.woff2
+ */
+
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  /*
+   * The file's real axis is 100–900. Declaring 400–600 is deliberate: Murano
+   * uses three weights and forbids 700, and a subrange declaration makes the
+   * browser clamp anything heavier instead of rendering it. That turns a
+   * design rule into something the stylesheet enforces on its own — including
+   * for <strong>, which asks for 700 by default.
+   */
+  font-weight: 400 600;
+  font-display: swap;
+  src: url('./inter.woff2') format('woff2-variations');
+}

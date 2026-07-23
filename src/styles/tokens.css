@@ -1,0 +1,176 @@
+/*
+ * Murano — design tokens.
+ *
+ * Every value here was measured from the reference's computed styles at
+ * 1280px, not eyeballed. See MURANO-DESIGN-CODE.md for the measurements and
+ * the reasoning. The prefix is `--mur-` so this can coexist with the older
+ * Meridian tokens if anything is ever migrated across.
+ *
+ * The signature of this system is that the light range is a narrow band of
+ * warm neutrals. Layers are made by shifting warmth 2–5 units, NOT by
+ * contrast. If you find yourself reaching for a darker grey to separate two
+ * surfaces, reach for a hairline instead.
+ */
+
+:root {
+  /* ---------- Surfaces ----------
+     Never pure #FFF. The off-white IS the design; a white section would read
+     as a bug, not as a lighter section. */
+  --mur-paper: #f1f0ea; /* body base */
+  --mur-surface-1: #f6f7f6; /* lighter section */
+  --mur-surface-2: #ebe7e1; /* warmer/darker section */
+  --mur-surface-3: #ede8e1;
+  --mur-card: #f8f7f4;
+
+  /* Dark is punctuation, not a theme. Exactly one block at the end of the
+     page uses these, and never pure #000. */
+  --mur-dark: #09090b;
+  --mur-dark-deep: #090909; /* footer, a hair below the CTA block */
+
+  /* ---------- Ink ----------
+     Only two of these are text colours on paper. See the contrast table
+     below before adding a third. */
+  --mur-ink: #09090b; /* primary text — 17.4:1 on paper */
+  --mur-ink-warm: #262423;
+  /*
+   * Secondary text. The reference measures #6D6864, which is 4.82:1 on paper
+   * and passes — but 4.47:1 on --mur-surface-2, which fails AA by 0.03 and
+   * was doing exactly that in the audience section. Darkened four units so
+   * one token clears 4.5:1 on every light surface in the system rather than
+   * only on the one it was sampled against:
+   *   paper 5.12 · surface-1 5.44 · surface-2 4.75 · surface-3 4.80 · card 5.46
+   * The shift is imperceptible next to the original and removes the need for
+   * a per-surface text colour, which is the kind of special case that quietly
+   * turns into six of them.
+   */
+  --mur-text-body: #696460;
+  --mur-on-dark: #e8ebe6; /* text on the dark block — 16.5:1, warm-green white */
+  --mur-on-dark-body: #a7a499; /* secondary text on dark — 7.97:1, AAA pass */
+
+  /*
+   * `--mur-line` and `--mur-sage` are NOT text colours.
+   *
+   * The measured palette lists #A7A499 as "tertiary / borders". As a border
+   * it is exactly right. As text on paper it computes to 2.19:1, which fails
+   * AA for body text (4.5:1) and fails even the large-text floor (3:1). So
+   * Murano has no tertiary text token at all: anything that wants to be
+   * quieter than --mur-text-body has to get there with size or space, not
+   * with a lighter grey. On the dark block the same hex is fine (7.97:1) —
+   * the identical colour is unreadable on paper and comfortably AAA on ink,
+   * which is why --mur-on-dark-body exists and its paper twin does not.
+   */
+  --mur-line: #a7a499; /* hairline / border ONLY */
+  --mur-line-soft: #dcd9d1; /* quieter rule, for dividers inside a card */
+  --mur-sage: #a1a5a0; /* decorative fill ONLY */
+
+  /* ---------- Accent ----------
+     Burnt amber. 6.08:1 on paper, so it is safe as text as well as fill —
+     which is rare for an accent and worth using. */
+  --mur-accent: #8b4804;
+  --mur-accent-tint: #f0e6da; /* accent at low saturation, for quiet fills */
+
+  /*
+   * Second accent, added 2026-07-23 from the reference. It is NOT a second
+   * decorative colour — amber is still the only one of those. Moss is
+   * *semantic*: it marks our own figure in a comparison against someone
+   * else's. On the reference that is the solid Botpress bar against the
+   * hatched Zendesk and Intercom bars, and the savings number above them.
+   * Used anywhere else it stops meaning anything.
+   *
+   * The hex was picked for optical parity with amber rather than by eye, so
+   * neither accent shouts over the other when both appear on a page:
+   *   moss  paper 6.07 · surface-1 6.45 · surface-2 5.63 · surface-3 5.69 · card 6.47
+   *   amber paper 6.08 · surface-1 6.46 · surface-2 5.63 · surface-3 5.69 · card 6.48
+   * Same floor (5.63 on surface-2), same ceiling. They are siblings.
+   */
+  --mur-accent-moss: #525f2b;
+
+  /* ---------- Radii ----------
+     8px is the default and carries most of the page. 20px is for large
+     cards only; using it on small elements makes them read as pills. */
+  --mur-r-sm: 8px;
+  --mur-r-md: 12px;
+  --mur-r-lg: 20px;
+  --mur-r-xl: 80px; /* soft blocks */
+  --mur-r-pill: 999px;
+
+  /* ---------- Space ----------
+     The reference's gap scale, verbatim. 25.6px is not a typo — it is
+     1.6rem and it appears often enough to be part of the system. */
+  --mur-sp-1: 8px;
+  --mur-sp-2: 12px;
+  --mur-sp-3: 16px;
+  --mur-sp-4: 25.6px;
+  --mur-sp-5: 32px;
+  --mur-sp-6: 64px;
+
+  /* ---------- Rhythm ----------
+     One constant. A section is padding-block: var(--mur-section-y) and there
+     are no special cases except the hero. Resisting per-section tuning is
+     what makes the page feel like one document. */
+  --mur-section-y: 76.8px;
+  --mur-nav-h: 56px;
+
+  /* ---------- Measure ---------- */
+  --mur-w-outer: 1440px;
+  --mur-w-inner: 1200px;
+  --mur-w-text: 560px; /* text column ceiling — never wider */
+  --mur-w-card: 416px;
+
+  /* ---------- Type ----------
+     One variable grotesk, three weights. 700 does not exist in this system:
+     the @font-face clamps the axis at 600 so a stray bold cannot render. */
+  --mur-font: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --mur-fw-regular: 400;
+  --mur-fw-medium: 500;
+  --mur-fw-semi: 600;
+
+  --mur-t-display: 74.8px;
+  --mur-t-display-lh: 1.1;
+  --mur-t-display-ls: -0.02em; /* negative tracking on display ONLY */
+
+  --mur-t-h2: 35.7px;
+  --mur-t-h2-lh: 1.25;
+
+  --mur-t-h3: 22px;
+  --mur-t-h3-lh: 1.3;
+
+  --mur-t-body: 17px;
+  --mur-t-body-lh: 1.45;
+
+  --mur-t-eyebrow: 18.6px;
+  --mur-t-eyebrow-lh: 1.45;
+
+  --mur-t-small: 15px;
+  --mur-t-small-lh: 1.5;
+
+  /* ---------- Depth ----------
+     Shadows are the exception, not the mechanism. Separation comes from a
+     hairline or a surface shift. These two exist for the rare card that has
+     to lift off the page, and nothing else should use them. */
+  --mur-shadow-card: 0 12px 20px -12px rgb(0 0 0 / 12%);
+  --mur-shadow-soft: 0 2px 10px rgb(0 0 0 / 10%);
+
+  /* Motion tokens are not here. Durations, easings and distances live in
+     motion.css as `--mo-*`, so there is exactly one place to change how the
+     page moves. Two motion vocabularies is how a system drifts. */
+}
+
+/* The display size is measured at 1280px and does not survive a phone. These
+   are the only two places the type scale bends. */
+@media (max-width: 960px) {
+  :root {
+    --mur-t-display: 52px;
+    --mur-t-h2: 30px;
+    --mur-section-y: 64px;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --mur-t-display: 40px;
+    --mur-t-h2: 26px;
+    --mur-t-eyebrow: 16px;
+  }
+}

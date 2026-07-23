@@ -1,0 +1,91 @@
+/*
+ * A real <table>, because it is real tabular data and a screen reader should
+ * be able to say "row 3, Trevio column". Styled to read as a ledger: hairline
+ * rules, no zebra fill, no card around it.
+ */
+
+.cmp {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.cmp th,
+.cmp td {
+  padding: var(--mur-sp-3) var(--mur-sp-3);
+  border-bottom: 1px solid var(--mur-line-soft);
+  vertical-align: top;
+}
+
+.cmp thead th {
+  border-bottom-color: var(--mur-line);
+  color: var(--mur-text-body);
+  font-size: 13px;
+  font-weight: var(--mur-fw-regular);
+}
+
+.cmp th:first-child,
+.cmp td:first-child {
+  padding-left: 0;
+}
+
+.cmp td:last-child {
+  padding-right: 0;
+}
+
+.cmp__metric {
+  font-weight: var(--mur-fw-medium);
+  font-size: var(--mur-t-small);
+}
+
+.cmp__note {
+  margin-top: 4px;
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+.cmp__manual {
+  color: var(--mur-text-body);
+  font-size: var(--mur-t-small);
+}
+
+.cmp__trevio {
+  font-size: var(--mur-t-small);
+}
+
+/* On a phone the table becomes stacked blocks. A horizontally scrolling
+   four-column table is technically fine and practically unread. */
+@media (max-width: 720px) {
+  .cmp thead {
+    display: none;
+  }
+
+  .cmp,
+  .cmp tbody,
+  .cmp tr,
+  .cmp td {
+    display: block;
+  }
+
+  .cmp tr {
+    padding-block: var(--mur-sp-3);
+    border-bottom: 1px solid var(--mur-line);
+  }
+
+  .cmp td {
+    padding: 0;
+    border: 0;
+  }
+
+  .cmp td + td {
+    margin-top: var(--mur-sp-2);
+  }
+
+  .cmp td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    color: var(--mur-text-body);
+    font-size: 12px;
+    margin-bottom: 2px;
+  }
+}

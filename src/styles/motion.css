@@ -1,0 +1,199 @@
+/*
+ * Murano — motion system.
+ *
+ * One vocabulary, six variants, one observer. Components declare intent with
+ * `data-motion="…"` and never write their own keyframes, so the page has a
+ * single motion personality rather than eleven.
+ *
+ * Three rules the whole file obeys:
+ *
+ *   1. Only `opacity` and `transform` animate. Both are composited, so a
+ *      reveal never touches layout or paint and never drops a frame. Width,
+ *      height, top and margin are not animatable properties in this system —
+ *      the bar variant exists precisely so a chart can grow without them.
+ *   2. Motion is small. 12px is the largest distance in the file. Anything
+ *      that reads as "an animation" while you are reading the page is a bug.
+ *   3. The hidden state only exists once JS has confirmed it can un-hide it
+ *      (`html.mo`). Every failure mode — no IntersectionObserver, background
+ *      tab, thrown exception — leaves the page fully readable rather than
+ *      blank. This is the one property worth protecting above all others.
+ */
+
+:root {
+  /* ---------- Duration ----------
+     Interaction feedback is faster than the eye tracks; entrances are slower
+     because they carry meaning. Nothing is over 720ms. */
+  --mo-instant: 120ms; /* press */
+  --mo-quick: 160ms; /* hover colour */
+  --mo-base: 240ms; /* state change — nav, disclosure */
+  --mo-enter: 520ms; /* scroll reveal */
+  --mo-data: 720ms; /* a bar filling: slower, because it is information */
+
+  /* ---------- Easing ----------
+     Entrances leave fast and settle slowly — that late deceleration is what
+     reads as "considered" rather than "animated". State changes use the
+     symmetric standard curve. No overshoot anywhere: nothing bounces. */
+  --mo-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --mo-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---------- Distance ----------
+     The entire range. A 40px entrance is a slide; 12px is a settle. */
+  --mo-rise: 12px; /* text blocks */
+  --mo-lift: 6px; /* dense or large elements, where 12px reads as heavy */
+  --mo-press: 1px; /* button depress */
+
+  /* ---------- Stagger ----------
+     Capped: without a ceiling a nine-item list finishes 540ms after it
+     starts, and the last row arrives after the reader is already there.
+
+     `--mo-i` is the element's step, assigned by the hook and already
+     absolute: a nested group carrying `data-motion-base` has the offset
+     folded in before it lands here. That offset is deliberately an attribute
+     read in JS rather than a CSS variable — a custom property inherits, so a
+     container declaring a base for its children would also delay itself, and
+     the card would arrive after the contents it is supposed to contain. */
+  --mo-step: 60ms;
+}
+
+/* ==========================================================================
+   Variants
+   ========================================================================== */
+
+/*
+ * `html.mo` is the gate. Added by the motion hook on mount; if it is never
+ * added, none of the rules below apply and the page is simply visible.
+ */
+
+html.mo [data-motion] {
+  opacity: 0;
+}
+
+/* rise — the default. Text, headings, list items. */
+html.mo [data-motion='rise'] {
+  transform: translate3d(0, var(--mo-rise), 0);
+}
+
+/* lift — half the distance, for elements big enough that 12px looks like a
+   drop rather than a settle: full-width cards, tables, the dark block. */
+html.mo [data-motion='lift'] {
+  transform: translate3d(0, var(--mo-lift), 0);
+}
+
+/* fade — opacity only. For anything already in position where moving it
+   would fight the layout: the nav, a surface, a container that holds
+   staggered children of its own. */
+html.mo [data-motion='fade'] {
+  transform: none;
+}
+
+/*
+ * assemble — the one variant with a scale, used in one place: the insight
+ * card, where the product itself appears. 0.994 is far below the threshold
+ * where scale reads as zoom; it reads as the card settling into focus. It
+ * earns the exception because that card is the argument of the page.
+ */
+html.mo [data-motion='assemble'] {
+  transform: translate3d(0, var(--mo-lift), 0) scale(0.994);
+}
+
+/*
+ * bar — a chart column growing. scaleX on a full-width element, never an
+ * animated `width`: width is layout and would reflow the row on every frame.
+ * `--mo-scale` is the final proportion, set inline from the data.
+ */
+html.mo [data-motion='bar'] {
+  opacity: 1; /* the bar is never faded — only its length is animated */
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* ---------- The revealed state ---------- */
+
+html.mo [data-motion].is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--mo-enter) var(--mo-ease-out),
+    transform var(--mo-enter) var(--mo-ease-out);
+  transition-delay: calc(var(--mo-i, 0) * var(--mo-step));
+}
+
+/*
+ * A bar is revealed by its container, never by itself.
+ *
+ * Scaled to zero it has zero area, and an element with zero area never
+ * satisfies an IntersectionObserver threshold — it would hide itself from the
+ * very trigger meant to reveal it and sit at scaleX(0) forever. Since a bar
+ * is always part of a chart and a chart always arrives as one object, the
+ * nearest revealed `[data-motion]` ancestor drives it. The bar keeps its own
+ * `--mo-i`, so the columns still fill in sequence.
+ */
+html.mo [data-motion].is-in [data-motion='bar'] {
+  transform: scaleX(var(--mo-scale, 1));
+  transition: transform var(--mo-data) var(--mo-ease-out);
+  transition-delay: calc(var(--mo-i, 0) * var(--mo-step));
+}
+
+/* ==========================================================================
+   Interaction
+   ==========================================================================
+   Hover and press belong to elements that actually do something. A card that
+   is not clickable does not light up when the pointer crosses it — that is
+   decoration pretending to be affordance, and it teaches the reader to
+   distrust every other hover on the page.
+   ========================================================================== */
+
+@media (hover: hover) {
+  .btn,
+  .nav__link,
+  .footer__link,
+  .faq__q {
+    transition:
+      background-color var(--mo-quick) var(--mo-ease),
+      border-color var(--mo-quick) var(--mo-ease),
+      color var(--mo-quick) var(--mo-ease);
+  }
+}
+
+/* Press. 1px of travel, no scale — a button that shrinks under the cursor
+   reads as a toy. `:active` needs no transition: the depress must be
+   immediate or it feels like lag, and the release inherits the hover curve. */
+.btn:active {
+  transform: translate3d(0, var(--mo-press), 0);
+}
+
+/*
+ * The focus ring is deliberately excluded from every transition above. A
+ * keyboard user tabbing quickly must see the ring the instant it lands; a
+ * 160ms fade on an outline reads as the interface failing to keep up.
+ */
+
+/* ==========================================================================
+   Reduced motion
+   ==========================================================================
+   Content still appears — it just stops travelling to get there. The failure
+   mode of "reduce motion" must never be "content is now invisible", which is
+   what happens if you only disable the transition and leave the hidden state.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html.mo [data-motion] {
+    opacity: 1;
+    transform: none;
+  }
+
+  html.mo [data-motion='bar'],
+  html.mo [data-motion].is-in [data-motion='bar'] {
+    transform: scaleX(var(--mo-scale, 1));
+  }
+
+  html.mo [data-motion].is-in,
+  html.mo [data-motion].is-in [data-motion='bar'] {
+    transition: none;
+    transition-delay: 0ms;
+  }
+
+  .btn:active {
+    transform: none;
+  }
+}

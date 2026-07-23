@@ -1,0 +1,63 @@
+.aud__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: var(--mur-sp-6);
+  align-items: start;
+}
+
+.aud__fits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mur-sp-4);
+  margin: 0;
+}
+
+.aud__fit {
+  padding-bottom: var(--mur-sp-4);
+  border-bottom: 1px solid var(--mur-line-soft);
+}
+
+.aud__fit:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.aud__fit-title {
+  margin-bottom: var(--mur-sp-1);
+}
+
+/* Saying who this is wrong for is cheaper for both sides than finding out on
+   a call. It gets its own card rather than a footnote. */
+.aud__misfits-head {
+  margin-bottom: var(--mur-sp-3);
+  color: var(--mur-text-body);
+  font-size: var(--mur-t-small);
+}
+
+.aud__misfits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mur-sp-2);
+  margin: 0;
+}
+
+.aud__misfit {
+  display: flex;
+  gap: var(--mur-sp-2);
+  font-size: var(--mur-t-small);
+  line-height: 1.5;
+  color: var(--mur-text-body);
+}
+
+.aud__misfit::before {
+  content: '—';
+  flex: none;
+  color: var(--mur-line);
+}
+
+@media (max-width: 900px) {
+  .aud__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--mur-sp-5);
+  }
+}

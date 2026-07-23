@@ -1,0 +1,100 @@
+.pri__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--mur-sp-6);
+  align-items: start;
+}
+
+/* ---------- Pilot ---------- */
+
+.pri__pilot-headline {
+  margin-bottom: var(--mur-sp-2);
+}
+
+.pri__slots {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mur-sp-1);
+  margin-bottom: var(--mur-sp-3);
+  padding: 6px 12px;
+  border-radius: var(--mur-r-pill);
+  background: var(--mur-accent-tint);
+  color: var(--mur-accent);
+  font-size: 13px;
+}
+
+.pri__terms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--mur-sp-4);
+  margin-top: var(--mur-sp-4);
+  padding-top: var(--mur-sp-4);
+  border-top: 1px solid var(--mur-line);
+}
+
+.pri__terms-head {
+  margin-bottom: var(--mur-sp-2);
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+.pri__term-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mur-sp-2);
+  margin: 0;
+  font-size: var(--mur-t-small);
+  line-height: 1.45;
+}
+
+/* ---------- Model ---------- */
+
+.pri__model-head {
+  margin-bottom: var(--mur-sp-3);
+  color: var(--mur-text-body);
+  font-size: var(--mur-t-small);
+}
+
+.pri__lines {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 var(--mur-sp-5);
+}
+
+.pri__line {
+  padding-block: var(--mur-sp-3);
+  border-bottom: 1px solid var(--mur-line-soft);
+}
+
+.pri__line-label {
+  font-size: var(--mur-t-small);
+  font-weight: var(--mur-fw-medium);
+}
+
+.pri__line-note {
+  margin-top: 2px;
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+/* The "never" list is struck through — the page is making a promise about
+   what it will not charge for, and that reads faster than a paragraph. */
+.pri__line--never .pri__line-label {
+  text-decoration: line-through;
+  text-decoration-color: var(--mur-line);
+  color: var(--mur-text-body);
+}
+
+@media (max-width: 900px) {
+  .pri__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--mur-sp-5);
+  }
+}
+
+@media (max-width: 560px) {
+  .pri__terms {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--mur-sp-3);
+  }
+}

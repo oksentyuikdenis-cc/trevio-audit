@@ -1,0 +1,236 @@
+@import './tokens.css';
+@import './fonts/fonts.css';
+@import './motion.css';
+
+/* ---------- Reset ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Nav height plus air. Measured at exactly the bar height, a jumped-to
+     section lands flush against the underside of the nav and its first line
+     tucks underneath. */
+  scroll-padding-top: calc(var(--mur-nav-h) + var(--mur-sp-4));
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--mur-paper);
+  color: var(--mur-ink);
+  font-family: var(--mur-font);
+  font-size: var(--mur-t-body);
+  line-height: var(--mur-t-body-lh);
+  font-weight: var(--mur-fw-regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* A list that carries a class is a UI list and gets no markers; a bare <ul>
+   inside prose keeps its bullets. Saves repeating the same three-line reset
+   in every section stylesheet. */
+ul[class],
+ol[class] {
+  list-style: none;
+  padding: 0;
+}
+
+/* ---------- Type ----------
+   Four sizes carry the whole page. Negative tracking is on the display only;
+   applying it further down makes body text look squeezed rather than tight. */
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+ul,
+ol,
+dl {
+  margin: 0;
+}
+
+.display {
+  font-size: var(--mur-t-display);
+  line-height: var(--mur-t-display-lh);
+  letter-spacing: var(--mur-t-display-ls);
+  font-weight: var(--mur-fw-semi);
+  text-wrap: balance;
+}
+
+.h2 {
+  font-size: var(--mur-t-h2);
+  line-height: var(--mur-t-h2-lh);
+  font-weight: var(--mur-fw-medium);
+  letter-spacing: normal;
+  text-wrap: balance;
+}
+
+.h3 {
+  font-size: var(--mur-t-h3);
+  line-height: var(--mur-t-h3-lh);
+  font-weight: var(--mur-fw-medium);
+}
+
+.eyebrow {
+  font-size: var(--mur-t-eyebrow);
+  line-height: var(--mur-t-eyebrow-lh);
+  font-weight: var(--mur-fw-regular);
+  color: var(--mur-text-body);
+}
+
+.small {
+  font-size: var(--mur-t-small);
+  line-height: var(--mur-t-small-lh);
+}
+
+/* The one rule that keeps long-form readable: a text column never exceeds
+   its measure, whatever the container is doing. */
+.prose {
+  max-width: var(--mur-w-text);
+  color: var(--mur-text-body);
+  text-wrap: pretty;
+}
+
+strong,
+b {
+  /* The @font-face already clamps the axis at 600; this states the intent so
+     nobody has to work out why their bold looks light. */
+  font-weight: var(--mur-fw-semi);
+}
+
+a {
+  color: inherit;
+}
+
+/* Every numeral is tabular. Proportional figures make a counter visibly
+   jitter as it counts and stop a column of numbers aligning down its own
+   decimal point. */
+.nums,
+table {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Layout ---------- */
+
+.section {
+  position: relative;
+  /* One constant, no per-section tuning. The hero is the only exception and
+     it sets its own padding-top. */
+  padding-block: var(--mur-section-y);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--mur-w-inner);
+  margin-inline: auto;
+  padding-inline: var(--mur-sp-4);
+}
+
+@media (max-width: 560px) {
+  .container {
+    padding-inline: var(--mur-sp-3);
+  }
+}
+
+/* ---------- Surfaces ----------
+   Layers are made by shifting warmth a few units, not by contrast. The dark
+   pair is the page's only punctuation and lives at the very end. */
+
+.surface-1 {
+  background: var(--mur-surface-1);
+}
+
+.surface-2 {
+  background: var(--mur-surface-2);
+}
+
+.surface-dark {
+  background: var(--mur-dark);
+  color: var(--mur-on-dark);
+}
+
+.surface-dark .prose,
+.surface-dark .eyebrow {
+  color: var(--mur-on-dark-body);
+}
+
+/* Reveal lives in motion.css — the whole entrance system is one file so the
+   page has a single motion personality rather than one per component. */
+
+/* ---------- Focus and skip ----------
+   The ring has to read on #F1F0EA, where a default blue outline nearly
+   disappears. Ink at 2px with an offset is the only thing that survives every
+   surface in this palette, including the dark block. */
+
+:focus-visible {
+  outline: 2px solid var(--mur-accent);
+  outline-offset: 3px;
+  border-radius: var(--mur-r-sm);
+}
+
+.surface-dark :focus-visible {
+  outline-color: var(--mur-on-dark);
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--mur-sp-2);
+  left: var(--mur-sp-2);
+  z-index: 200;
+  padding: var(--mur-sp-2) var(--mur-sp-3);
+  background: var(--mur-ink);
+  color: var(--mur-surface-1);
+  border-radius: var(--mur-r-pill);
+  font-size: var(--mur-t-small);
+  text-decoration: none;
+  transform: translateY(-250%);
+  transition: transform var(--mo-base) var(--mo-ease);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* ---------- Reduced motion ----------
+   The entrance variants are neutralised in motion.css, next to the rules they
+   undo. What is left here is everything outside the motion system: the skip
+   link, the disclosure marker, and a blanket floor for anything added later
+   that forgets to opt out. */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

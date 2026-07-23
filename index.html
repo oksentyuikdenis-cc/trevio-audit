@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./trevio-favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!--
+      Murano is light-only. There is no theme toggle and no boot script that
+      resolves one: the dark block at the end of the page is a section, not a
+      theme. `color-scheme: light` stops the browser painting form controls
+      and scrollbars dark on a machine set to dark mode, which would be the
+      one place the OS could override a deliberately paper-first design.
+    -->
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#F1F0EA" />
+
+    <title>Trevio — your customers already told you</title>
+    <!-- Kept under ~155 characters; search results truncate past that and a
+         cut-off sentence reads as a broken page. -->
+    <meta
+      name="description"
+      content="Trevio reads every ticket, review, call and thread, and hands your team the three product decisions worth making this week — each traceable to its source."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Trevio — your customers already told you" />
+    <meta
+      property="og:description"
+      content="Feedback intelligence for product teams. Every claim traceable to the conversations behind it."
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

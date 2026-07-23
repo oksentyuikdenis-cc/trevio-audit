@@ -1,0 +1,25 @@
+/*
+ * The heading block every section opens with. Keeping it one component is
+ * what enforces "section heading ≤ ~2 lines at 1200px" — the measure is set
+ * here once rather than argued about per section.
+ */
+
+.sec-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mur-sp-3);
+  max-width: 46ch;
+  margin-bottom: var(--mur-sp-6);
+}
+
+.sec-head__eyebrow {
+  color: var(--mur-text-body);
+}
+
+.sec-head__lead {
+  margin-top: calc(var(--mur-sp-1) * -1);
+}
+
+.sec-head--wide {
+  max-width: none;
+}

@@ -1,0 +1,156 @@
+/*
+ * The only place on the page where the product is actually visible. On the
+ * previous site this sat at 3301px — roughly 4.5 screens down — so most
+ * visitors left having read claims about a product they never saw. It is
+ * section two here for that reason and no other.
+ */
+
+.insight__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mur-sp-1);
+  margin-bottom: var(--mur-sp-4);
+  padding: 6px 12px;
+  border: 1px solid var(--mur-line);
+  border-radius: var(--mur-r-pill);
+  background: var(--mur-accent-tint);
+  color: var(--mur-accent);
+  font-size: 13px;
+}
+
+/* ---------- The headline card ---------- */
+
+.insight__card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 340px);
+  gap: var(--mur-sp-6);
+}
+
+.insight__scope {
+  color: var(--mur-text-body);
+  font-size: var(--mur-t-small);
+  margin-bottom: var(--mur-sp-2);
+}
+
+.insight__title {
+  margin-bottom: var(--mur-sp-3);
+  max-width: 24ch;
+}
+
+.insight__summary {
+  max-width: none;
+}
+
+/* ---------- Impact figures ---------- */
+
+.insight__impact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mur-sp-6);
+  margin-top: var(--mur-sp-5);
+  padding-top: var(--mur-sp-4);
+  border-top: 1px solid var(--mur-line);
+}
+
+.insight__figure {
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: var(--mur-fw-medium);
+  letter-spacing: normal;
+}
+
+.insight__figure--accent {
+  color: var(--mur-accent);
+}
+
+.insight__figure-label {
+  margin-top: 4px;
+  color: var(--mur-text-body);
+  font-size: var(--mur-t-small);
+}
+
+/* ---------- Evidence ----------
+   The argument of the whole product: no claim without the conversations
+   behind it. If this column is ever cut for space, cut the section instead. */
+
+.insight__evidence-head {
+  margin-bottom: var(--mur-sp-3);
+  color: var(--mur-text-body);
+  font-size: var(--mur-t-small);
+}
+
+.insight__quotes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mur-sp-3);
+  margin: 0;
+}
+
+.insight__quote {
+  padding-left: var(--mur-sp-3);
+  border-left: 1px solid var(--mur-line);
+}
+
+.insight__quote-text {
+  font-size: var(--mur-t-small);
+  line-height: 1.5;
+}
+
+.insight__quote-source {
+  margin-top: 6px;
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+/* ---------- The other two, compact ---------- */
+
+.insight__rest {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--mur-sp-4);
+  margin-top: var(--mur-sp-4);
+}
+
+.insight__rest-title {
+  margin-bottom: var(--mur-sp-2);
+}
+
+.insight__rest-scope {
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+.insight__rest-figures {
+  display: flex;
+  gap: var(--mur-sp-4);
+  margin-top: var(--mur-sp-3);
+  padding-top: var(--mur-sp-3);
+  border-top: 1px solid var(--mur-line-soft);
+}
+
+.insight__rest-figure {
+  font-size: 20px;
+  font-weight: var(--mur-fw-medium);
+}
+
+.insight__rest-figure-label {
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+/* ---------- Narrow ---------- */
+
+@media (max-width: 900px) {
+  .insight__card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--mur-sp-5);
+  }
+
+  .insight__rest {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .insight__impact {
+    gap: var(--mur-sp-4);
+  }
+}

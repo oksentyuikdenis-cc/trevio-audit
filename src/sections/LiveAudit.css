@@ -1,0 +1,333 @@
+/*
+ * The live audit — what used to be the reserved 3D slot.
+ *
+ * The slot existed to be measured: where it lands in the scroll, what surface
+ * surrounds it, what the page weighs without it. Those questions got answered
+ * by putting the product's actual output here instead of a scene. Section two
+ * makes the claim on invented data and says so; this section makes the same
+ * claim on a real corpus, on whatever product a visitor types in.
+ *
+ * The card internals are Insight.css and are imported by LiveAudit.tsx rather
+ * than restyled here. That is deliberate to the point of being the whole
+ * point: if this section drew its own card, a reader could reasonably suspect
+ * the live one had been tuned to look good. It is the same stylesheet.
+ */
+
+/* ---------- Search ----------
+   The one control on the page that does something rather than navigating
+   somewhere, so it gets the width and the weight to say so. */
+
+.audit__search {
+  display: flex;
+  gap: var(--mur-sp-2);
+  max-width: 620px;
+  margin: 0 auto var(--mur-sp-3);
+}
+
+.audit__field {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 20px;
+  border: 1px solid var(--mur-line);
+  border-radius: var(--mur-r-pill);
+  background: var(--mur-card);
+  color: var(--mur-text);
+  font: inherit;
+  font-size: var(--mur-t-small);
+}
+
+.audit__field::placeholder {
+  color: var(--mur-text-body);
+}
+
+.audit__field:focus-visible {
+  outline: 2px solid var(--mur-accent);
+  outline-offset: 1px;
+}
+
+.audit__field:disabled {
+  opacity: 0.55;
+}
+
+/* Baked targets. Named "instant" rather than "examples" because that is the
+   honest difference — these answer from cache, anything else runs live. */
+.audit__suggest {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: var(--mur-sp-1);
+  margin-bottom: var(--mur-sp-5);
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+.audit__chip {
+  padding: 4px 12px;
+  border: 1px solid var(--mur-line-soft);
+  border-radius: var(--mur-r-pill);
+  background: transparent;
+  color: var(--mur-accent);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.audit__chip:hover {
+  border-color: var(--mur-accent);
+}
+
+.audit__chip:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ---------- Result header ---------- */
+
+.audit__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--mur-sp-3);
+  margin-bottom: var(--mur-sp-4);
+}
+
+/* Provenance stamp. Sits where Insight's `Fictional workspace` label sits and
+   is styled identically, because the two are meant to be read as a pair. */
+.audit__stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mur-sp-1);
+  padding: 6px 12px;
+  border: 1px solid var(--mur-line);
+  border-radius: var(--mur-r-pill);
+  background: var(--mur-accent-tint);
+  color: var(--mur-accent);
+  font-size: 13px;
+}
+
+.audit__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* ---------- Selection ledger ----------
+   Deliberately quiet type for a load-bearing sentence. It sits between the
+   provenance stamp and the card, so a reader meets "most of this was thrown
+   away, here is why" before meeting the first claim — which is the order the
+   argument has to arrive in to be believed. */
+
+.audit__ledger {
+  margin: calc(var(--mur-sp-4) * -1) 0 var(--mur-sp-4);
+  color: var(--mur-text-body);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.audit__ledger strong {
+  color: var(--mur-text);
+  font-weight: var(--mur-fw-medium);
+}
+
+/* ---------- Progress log ----------
+   Not decoration. The pipeline is the product, and this is the only place a
+   visitor sees it happen rather than reads that it happens. */
+
+.audit__log {
+  margin: 0 0 var(--mur-sp-4);
+  padding: var(--mur-sp-3) var(--mur-sp-4);
+  border: 1px dashed var(--mur-line);
+  border-radius: var(--mur-r-md);
+  list-style: none;
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+.audit__log li + li {
+  margin-top: 4px;
+}
+
+.audit__log li::before {
+  content: '· ';
+  color: var(--mur-accent);
+}
+
+.audit__error {
+  margin-bottom: var(--mur-sp-4);
+  color: var(--mur-accent);
+  font-size: var(--mur-t-small);
+}
+
+/* ---------- Suggested action ----------
+   Set apart with a rule and a label rather than styled to match the summary.
+   The whole card is an argument that every statement should show what kind of
+   statement it is; an opinion typeset identically to a measured finding
+   quietly undoes that. */
+
+.audit__advice {
+  margin-top: var(--mur-sp-4);
+  padding-left: var(--mur-sp-3);
+  border-left: 2px solid var(--mur-accent);
+}
+
+.audit__advice-label {
+  margin-bottom: 4px;
+  color: var(--mur-accent);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.audit__advice-text {
+  color: var(--mur-text);
+  font-size: var(--mur-t-small);
+  line-height: 1.55;
+}
+
+/* ---------- Honesty note ---------- */
+
+.audit__note {
+  max-width: 68ch;
+  margin-top: var(--mur-sp-4);
+  color: var(--mur-text-body);
+  font-size: 13px;
+}
+
+.audit__actions {
+  display: flex;
+  gap: var(--mur-sp-2);
+  margin-top: var(--mur-sp-4);
+}
+
+/* Print-only masthead. Off-screen the section sits inside a page that already
+   says who we are; on paper it leaves as a standalone document and has to
+   introduce itself. */
+.audit__print-head {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .audit__search {
+    flex-direction: column;
+  }
+
+  .audit__bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ---------- The report ----------
+ *
+ * Printing turns this section into the standalone audit the GTM plan calls the
+ * "Free Feedback Audit" — the thing that gets attached to a cold email. Three
+ * A4 pages in practice, not the one the plan optimistically named: a lead
+ * finding with its summary, recommendation, figures and four verbatim quotes
+ * does not compress into a page without dropping the evidence, and the
+ * evidence is the reason anyone would believe it. Measured rather than
+ * assumed — see the break rules below, which exist because the first attempt
+ * asserted a page count the content could not keep. It is
+ * a stylesheet rather than a PDF pipeline because the artefact wanted is
+ * exactly what is already on screen, and a second renderer is a second thing
+ * that can disagree with the product.
+ *
+ * Everything that is page furniture or interactive disappears; what remains is
+ * the claim, the figures, and the evidence.
+ */
+
+@media print {
+  .skip-link,
+  .nav,
+  .footer,
+  main > section:not(#live-audit) {
+    display: none !important;
+  }
+
+  .audit__search,
+  .audit__suggest,
+  .audit__log,
+  .audit__error,
+  .audit__actions {
+    display: none !important;
+  }
+
+  /* The section's own heading is landing-page copy and has to go with it.
+     On paper it read "Now watch it on someone else's product" over a report
+     about the reader's own company, under a lead beginning "Everything above
+     this line is a mockup" — while this stylesheet had just deleted everything
+     above that line. Both sentences are true in a page that scrolls and false
+     in a document that travels alone. `.audit__print-head` is the header this
+     artefact actually needs, and it names the subject, the corpus and the
+     model. Removing this also reclaims the near-empty first page the heading
+     block was occupying. */
+  #live-audit .sec-head {
+    display: none !important;
+  }
+
+  #live-audit {
+    padding: 0 !important;
+  }
+
+  .audit__print-head {
+    display: block;
+    margin-bottom: var(--mur-sp-4);
+    padding-bottom: var(--mur-sp-2);
+    border-bottom: 1px solid var(--mur-line);
+  }
+
+  .audit__print-head strong {
+    font-weight: var(--mur-fw-semi);
+  }
+
+  /* The accent and the card fills carry meaning here — the stamp says where
+     the data came from — so they survive a default "don't print backgrounds"
+     setting rather than washing out to white. */
+  .audit__stamp,
+  .card {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Where the page is allowed to break.
+
+     `break-inside: avoid` on the lead card was the intent and not the effect:
+     that card measures about 1640px against roughly 950px of usable A4, and a
+     block taller than a page cannot be kept whole — the browser silently
+     ignores the rule and breaks wherever it lands, which included the middle
+     of a pull-quote. A rule that cannot be honoured is worse than no rule,
+     because it reads as a solved problem.
+
+     So the protection moves to the parts that do fit. Each of these is well
+     under a page, so the break falls between them instead of through one: a
+     quote stays with its attribution, the recommendation stays with its
+     "judgement, not measurement" label, and the figures stay in one row. */
+  .insight__quote,
+  .insight__impact,
+  .audit__advice,
+  .insight__rest li,
+  .audit__note {
+    break-inside: avoid;
+  }
+
+  /* Keep the finding's title with at least the start of its summary; a
+     heading stranded at the foot of a page reads as a missing section. */
+  .insight__title,
+  .insight__scope,
+  .insight__evidence-head {
+    break-after: avoid;
+  }
+
+  .insight__rest {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Reveal animations leave elements mid-transition if the page is printed
+     before they fire; on paper there is no scroll to trigger them. */
+  [data-motion] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
