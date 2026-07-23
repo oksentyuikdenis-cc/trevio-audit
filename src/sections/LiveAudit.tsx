@@ -151,6 +151,25 @@ export function LiveAudit() {
   const live = audit.meta.mode === 'live'
   const baseline = (audit.meta.model ?? '').startsWith('keyword baseline')
 
+  /**
+   * Provenance in two lengths.
+   *
+   * The server computes one string — "Gemini gemini-flash-lite-latest · US
+   * (and trains on free-tier prompts)" — carrying service, model version,
+   * region and caveat. All four matter, but not in the same place: the stamp
+   * answers "who computed this and where" at a glance, and the parenthetical
+   * is a limit, which belongs in the note with the other limits.
+   *
+   * `shortModel` keeps the service and the region and drops the version and
+   * the caveat; `modelDetail` is the whole thing, shown below.
+   */
+  const modelDetail = audit.meta.model ?? ''
+  const shortModel = modelDetail
+    .replace(/\s*\([^)]*\)/g, '')
+    .split(' · ')
+    .map((part, i) => (i === 0 ? part.split(' ')[0] : part))
+    .join(' · ')
+
   return (
     <section className="section" id="live-audit" data-motion-group>
       <div className="container">
@@ -230,14 +249,15 @@ export function LiveAudit() {
             {audit.meta.volumeTotal.toLocaleString('en-US')} reviews
             {audit.meta.windowDays > 0 && ` · ${audit.meta.windowDays} days`}
             {baseline && ' · keyword baseline'}
-            {/* Which model, and where it ran. The server has always computed
-                this string — "Mistral mistral-large-latest · EU (Paris)" —
-                specifically so the card could carry it, and the card was
-                dropping it. For a product whose pitch is that customer data
-                stays in Europe, the processing region is not metadata; it is
-                the claim, and an audit that cannot say where it was computed
-                is not evidence for it. */}
-            {audit.meta.model && ` · ${audit.meta.model}`}
+            {/* Which service and where it ran, short enough to read at a
+                glance. The full string the server computes — model version and
+                any caveat about how the tier handles prompts — is disclosed in
+                the note under the card, which is where a reader looks for
+                limits. Putting all of it here made a thirteen-pixel line that
+                was illegible from the back of a room and, read closely, argued
+                against the page it sits on. Provenance belongs on the card;
+                the fine print belongs with the other fine print. */}
+            {shortModel && ` · ${shortModel}`}
           </p>
         </div>
 
@@ -424,6 +444,14 @@ export function LiveAudit() {
           number it invented reaches this card. That is also why nothing here is denominated in
           money: revenue at risk needs your CRM, not a public corpus, and a plausible dollar figure
           is exactly the kind of thing this product exists to stop you from believing.
+          {/* The full processing disclosure, in the paragraph a reader scans
+              for limits rather than crammed into a stamp nobody can read from
+              a projector. Naming the exact model and how its tier treats
+              submitted text is the part that makes the residency claim
+              checkable instead of decorative. */}
+          {modelDetail && !baseline && (
+            <> Themes and wording on this card were produced by {modelDetail}.</>
+          )}
         </p>
       </div>
     </section>

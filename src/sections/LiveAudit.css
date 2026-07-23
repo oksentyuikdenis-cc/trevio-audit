@@ -240,6 +240,38 @@
   line-height: 1.55;
 }
 
+/* ---------- Read from the back of a room ----------
+ *
+ * This section is shown on a projector before it is ever read on a laptop, and
+ * the two want different type. Measured on the shipped card at 1440×900: the
+ * finding's headline was 22px against a 17px summary — a five-pixel difference
+ * that disappears at four metres, so the sentence the audience should read
+ * first had no more pull than the paragraph under it.
+ *
+ * Scoped to this section rather than changed in Insight.css, because section
+ * two renders the same component as a page-scale mockup where the current
+ * scale is right. Only the live audit is presented.
+ */
+
+#live-audit .insight__title {
+  font-size: clamp(24px, 2.1vw, 30px);
+  line-height: 1.22;
+  letter-spacing: -0.012em;
+}
+
+/* The figure is the claim; the label is its unit. They were 32px and 15px with
+   the label sitting directly under a number of the same weight, which reads as
+   two lines rather than one fact. */
+#live-audit .insight__figure {
+  font-size: clamp(34px, 2.6vw, 40px);
+}
+
+#live-audit .insight__figure-label {
+  color: var(--mur-muted);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
 /* ---------- Honesty note ---------- */
 
 .audit__note {
