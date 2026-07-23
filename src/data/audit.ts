@@ -142,6 +142,21 @@ export async function* runAudit(
   product: string,
   signal?: AbortSignal,
 ): AsyncGenerator<AuditEvent> {
+  // The same gate the other two calls carry, and it was missing here.
+  //
+  // Nothing could reach this in a default build — the search bar that calls it
+  // is not rendered — so no request was ever made. But "unreachable because
+  // nobody calls it" is a weaker claim than "not in the bundle", and the
+  // difference showed: `/api/health` and `/api/targets` were eliminated by the
+  // early return in their functions while the string `/api/audit` survived
+  // into the shipped JavaScript. On a page whose entire argument is that a
+  // path does not exist rather than merely goes unused, the guarantee should
+  // be structural. With this, the fetch is dead code and Vite drops it.
+  if (!MAY_PROBE) {
+    yield { type: 'error', message: 'Live audit is not enabled in this build.' }
+    return
+  }
+
   const res = await fetch('/api/audit', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
