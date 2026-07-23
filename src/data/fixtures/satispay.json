@@ -16,7 +16,7 @@
     "windowDays": 236,
     "generatedAt": "2026-07-21T23:48:28-07:00",
     "mode": "cached",
-    "model": "Mistral mistral-large-latest · EU (Paris)"
+    "model": "Gemini gemini-flash-lite-latest · US (and trains on free-tier prompts)"
   },
   "sources": [
     {
@@ -34,113 +34,68 @@
   ],
   "clusters": [
     {
-      "id": "funds-withheld-unresolved",
-      "label": "Funds withheld for days without resolution",
-      "weight": 0.12,
+      "id": "unresponsive-customer-support",
+      "label": "Completely unreachable human support and unhelpful AI bot",
+      "weight": 0.1733,
       "sentiment": "negative",
       "promoted": true
     },
     {
-      "id": "unresponsive-or-absent-customer-support",
-      "label": "Customer support is unresponsive or absent",
-      "weight": 0.1689,
-      "sentiment": "negative",
-      "promoted": true
-    },
-    {
-      "id": "forced-budget-or-auto-debit-issues",
-      "label": "Forced budget or auto-debit without consent",
-      "weight": 0.0356,
-      "sentiment": "negative",
-      "promoted": false
-    },
-    {
-      "id": "ticket-restaurant-ux-flaws",
-      "label": "Ticket restaurant UX is confusing and flawed",
-      "weight": 0.0578,
-      "sentiment": "negative",
-      "promoted": true
-    },
-    {
-      "id": "promo-or-referral-bonus-miscommunication",
-      "label": "Promo or referral bonus miscommunication or denial",
+      "id": "delayed-transfers-and-top-ups",
+      "label": "Slow top-ups and long delays transferring money out",
       "weight": 0.0533,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "account-closure-or-data-deletion-impossible",
-      "label": "Account closure or data deletion is impossible",
-      "weight": 0.04,
+      "id": "meal-voucher-ux-issues",
+      "label": "Confusing meal voucher usage and automatic balance deduction",
+      "weight": 0.0844,
+      "sentiment": "negative",
+      "promoted": true
+    },
+    {
+      "id": "forced-budget-and-marketing-popups",
+      "label": "Aggressive budget prompts and persistent promotional popups",
+      "weight": 0.0267,
+      "sentiment": "negative",
+      "promoted": true
+    },
+    {
+      "id": "promotional-bonus-disputes",
+      "label": "Unfulfilled referral bonuses and misleading promotional offers",
+      "weight": 0.0356,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "registration-or-verification-process-flawed",
-      "label": "Registration or verification process is flawed",
-      "weight": 0.04,
+      "id": "account-closure-difficulties",
+      "label": "Inability to delete accounts or revoke linked banking details",
+      "weight": 0.0222,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "positive-experience-with-core-functionality",
-      "label": "Positive experience with core payment functionality",
-      "weight": 0.1778,
-      "sentiment": "positive",
+      "id": "device-login-and-onboarding-blocks",
+      "label": "Login blocks on new devices and rigid onboarding constraints",
+      "weight": 0.0356,
+      "sentiment": "negative",
       "promoted": false
     }
   ],
   "insights": [
     {
-      "id": "support-failures-erode-user-confidence",
-      "title": "Support failures leave users feeling powerless and erode confidence in the service.",
-      "scope": "38 of 225 reviews · 94 days · 11 app versions",
-      "summary": "Users consistently report that customer support is either unresponsive or entirely absent, with many describing interactions limited to automated chatbots that fail to resolve issues. Requests for human assistance are ignored, and promises of callbacks or follow-ups are not honored. The lack of support is particularly damaging when users face urgent issues, such as frozen funds or unauthorized debits. Many express a sense of betrayal, as they feel the service prioritizes growth over addressing user concerns. The problem is widespread and affects users across multiple languages and regions.",
+      "id": "support-failure-on-financial-blocks",
+      "title": "Automated support deflection breaks trust when users experience frozen funds or missing transfers.",
+      "scope": "39 of 225 reviews · 236 days · 11 app versions",
+      "summary": "Users facing prolonged delays or blocked funds are met exclusively with an AI chatbot that promises human follow-up within a set timeframe, which never materializes. This leaves customers unable to reach anyone to resolve urgent financial discrepancies. The lack of a direct escalation path or emergency phone line turns technical glitches into severe customer panic. Relying solely on scripted bot responses exacerbates frustration during critical banking failures.",
       "impact": [
         {
-          "value": "38",
+          "value": "39",
           "label": "reviews"
         },
         {
           "value": "97%",
-          "label": "rated 1 star"
-        },
-        {
-          "value": "v4.31.0",
-          "label": "earliest in window"
-        }
-      ],
-      "evidence": [
-        {
-          "name": "MO",
-          "quote": "Non rispondono da giorni. Sono giorni che i miei soldi sono trattenuti e non trasferiti sul mio conto. Oltre i 5 giorni per effettuare un bonifico. Non risponde nessun umano…",
-          "source": "App Store · 2026-07-21 · v4.37.1"
-        },
-        {
-          "name": "MA",
-          "quote": "Fino a una settimana fa avrei dato almeno 4 stelle tranquillamente, ma qualche giorno fa è successo un evento che mi ha fatto inevitabilmente abbassare la valutazione. Ho invitato…",
-          "source": "App Store · 2026-07-20 · v4.37.1"
-        },
-        {
-          "name": "PS",
-          "quote": "awful without any support and help. just an unusual bot. Avoid it. lost 50 euro",
-          "source": "Google Play · 2026-05-20 · v4.33.1"
-        }
-      ],
-      "recommendation": "Introduce a dedicated, human-led support channel for urgent issues and ensure all support requests receive a response within a set timeframe. Publicly commit to resolving critical issues, such as frozen funds, within a defined period."
-    },
-    {
-      "id": "funds-withheld-causing-financial-distress",
-      "title": "Withheld funds cause financial distress and loss of trust in the service.",
-      "scope": "27 of 225 reviews · 236 days · 8 app versions",
-      "summary": "A recurring theme is users reporting that their money is withheld for days or even weeks after initiating transfers or top-ups. Many describe missing bill payments, being unable to access their own funds, and facing financial hardship as a result. The lack of transparency about the delay and the absence of a resolution exacerbate frustration. Some users suspect the delays are intentional to keep funds within the platform, while others simply feel abandoned by the service. The issue is not isolated to a single region or language, indicating a systemic problem.",
-      "impact": [
-        {
-          "value": "27",
-          "label": "reviews"
-        },
-        {
-          "value": "100%",
           "label": "rated 1 star"
         },
         {
@@ -150,35 +105,35 @@
       ],
       "evidence": [
         {
-          "name": "SO",
-          "quote": "4 days and still my money is not transferred, i missed my bill due because of this useless app, even their assistance takes one day to respond!!",
-          "source": "App Store · 2025-11-28 · v4.23.0"
-        },
-        {
           "name": "MO",
           "quote": "Non rispondono da giorni. Sono giorni che i miei soldi sono trattenuti e non trasferiti sul mio conto. Oltre i 5 giorni per effettuare un bonifico. Non risponde nessun umano…",
           "source": "App Store · 2026-07-21 · v4.37.1"
         },
         {
-          "name": "SA",
-          "quote": "1 settimana per spostare 100 euro dal questo conto al mio conto con iban quando alcune piattaforme lo fanno in meno di 10 secondi .. servizio clienti inesistente…pessimo",
-          "source": "App Store · 2026-07-16 · v4.37.0"
+          "name": "SU",
+          "quote": "Premetto che utilizzo Satispay da diversi anni ma ultimamente ho notato che il servizio clienti gestito dalla loro IA è diventato pessimo. La storia è questo: ricevo un pagamento…",
+          "source": "App Store · 2026-07-19 · v4.37.1"
+        },
+        {
+          "name": "HC",
+          "quote": "This app does not worth it. So bad and money deducted from your main bank to satispay account refused to show up. Always in progress and being held down for weeks. Satispay is a…",
+          "source": "Google Play · 2026-07-19 · v4.37.1"
         }
       ],
-      "recommendation": "Implement real-time or near-instant fund transfers and provide clear, proactive communication about any delays, including expected resolution timelines. Offer compensation or goodwill gestures for users affected by prolonged withholding."
+      "recommendation": "Implement a direct routing system to human agents inside the chat interface whenever a user flags a frozen transfer or missing funds."
     },
     {
-      "id": "ticket-restaurant-ux-frustrates-users",
-      "title": "Ticket restaurant functionality is confusing and forces unintended use of personal funds.",
-      "scope": "13 of 225 reviews · 93 days · 5 app versions",
-      "summary": "Users relying on Satispay for ticket restaurants describe a frustrating and confusing experience. The app often defaults to deducting payments from personal funds instead of ticket balances, even when the latter is available. The process of selecting ticket restaurants is cumbersome, requiring location services and manual searches, which fail frequently. Many users report being embarrassed at checkout when payments are declined or misapplied. The lack of clarity in the interface and the absence of a straightforward way to prioritize ticket spending over personal funds are recurring pain points.",
+      "id": "meal-vouchers-deduct-cash",
+      "title": "Corporate meal voucher interfaces obscure payment source, causing accidental deductions from personal bank balances.",
+      "scope": "19 of 225 reviews · 91 days · 7 app versions",
+      "summary": "Employees forced to use the app for welfare benefits report that purchases default to their personal funds rather than active meal vouchers. The app lacks clear prioritization settings or explicit prompts at checkout regarding which balance is being debited. Users must perform multiple awkward transactions or ask cashiers to split bills manually to avoid losing personal money. This flaw alienates users who rely on the platform strictly for corporate dining credits.",
       "impact": [
         {
-          "value": "13",
+          "value": "19",
           "label": "reviews"
         },
         {
-          "value": "77%",
+          "value": "74%",
           "label": "rated 1 star"
         },
         {
@@ -188,22 +143,60 @@
       ],
       "evidence": [
         {
-          "name": "BA",
-          "quote": "Ricevo dei buoni pasto su Satispay purtroppo non potendo completare il pagamento con altri metodi mi trovo sempre in imbarazzo alle casse perché spesso ci si ritrova senza…",
-          "source": "App Store · 2026-07-08 · v4.37.0"
+          "name": "FK",
+          "quote": "Entro nel supermercato, il Tigros è quello che è più vicino a casa mia compro solo generi alimentari vado a pagare con il saldo che deve scalare in automatico dei ticket e niente…",
+          "source": "App Store · 2026-07-06 · v4.37.0"
         },
         {
-          "name": "GA",
-          "quote": "Terrificante, peggior app mai utilizzata per i buoni pasto. Non si capisce nulla, bella solo la grafica, scomoda da morire. Manderò un’e-mail anche interna per cambiare provider",
-          "source": "App Store · 2026-07-08 · v4.37.0"
+          "name": "VO",
+          "quote": "Tutta la parte dedicata ai buoni pasto è pensata male e realizzata peggio, con il chiaro intento di farti usare la disponibilità e non i ticket stessi - cosa che infatti la prima…",
+          "source": "App Store · 2026-06-28 · v4.36.0"
         },
         {
-          "name": "AS",
-          "quote": "la parte dei buoni pasto non é per nulla comoda. Per favore introducete la visualizzazione dei luoghi sulla mappa, attualmente devo sprecare tempo, in parallelo, a cercare i…",
-          "source": "Google Play · 2026-06-16 · v4.35.0"
+          "name": "GT",
+          "quote": "continua a scalare i soldi anche se pago con buoni pasto in store dove sono attivi e faccio apposita richiesta",
+          "source": "Google Play · 2026-04-18 · v4.31.0"
         }
       ],
-      "recommendation": "Redesign the ticket restaurant payment flow to prioritize ticket balances by default and simplify the selection of affiliated stores. Add clear visual indicators to show which payment method will be used before checkout."
+      "recommendation": "Add a prominent toggle at checkout allowing users to explicitly select meal vouchers over personal balance before confirming a transaction."
+    },
+    {
+      "id": "forced-budget-popups",
+      "title": "Persistent budget prompts and promotional interruptions create friction during routine payments.",
+      "scope": "6 of 225 reviews · 21 days · 3 app versions",
+      "summary": "Frequent popup screens demand that users set up or increase an automated weekly deposit budget every time they open the application. These interruptions lack a permanent dismissal option, forcing users to click through promotional hurdles repeatedly. Such aggressive marketing tactics disrupt the checkout flow and alienate customers who prefer to manage their funds manually. Users interpret this intrusive design as an attempt to force unwanted capital lock-in.",
+      "impact": [
+        {
+          "value": "6",
+          "label": "reviews"
+        },
+        {
+          "value": "67%",
+          "label": "rated 1 star"
+        },
+        {
+          "value": "v4.36.0",
+          "label": "earliest in window"
+        }
+      ],
+      "evidence": [
+        {
+          "name": "LF",
+          "quote": "L’app funziona anche bene, il pagamento con qr code anche, ma questa cosa del budget da fissare ogni volta che si apre l’app fa marketing anni 90 , e fa perdere la pazienza",
+          "source": "App Store · 2026-07-20 · v4.37.1"
+        },
+        {
+          "name": "SU",
+          "quote": "I use Satispay for ticket restaurants. Is annoying, even with no notification active, every time I entered in the application to be requested to set a budget or receive…",
+          "source": "App Store · 2026-07-15 · v4.37.0"
+        },
+        {
+          "name": "FG",
+          "quote": "L'ho installata solo perché si tratta del nuovo gestore per i buoni pasto della mia azienda, ma non ho ancora iniziato ad usarla in tal senso, quindi non so come mi troverò. Ma…",
+          "source": "Google Play · 2026-07-10 · v4.36.0"
+        }
+      ],
+      "recommendation": "Introduce a permanent dismissal checkbox within the budget setup prompt so users are not asked repeatedly."
     }
   ]
 }

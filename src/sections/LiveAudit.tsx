@@ -125,9 +125,18 @@ export function LiveAudit() {
     ...targets.filter((t) => !BAKED_TARGETS.some((b) => b.slug === t.slug)),
   ]
 
-  const [lead, ...rest] = audit.insights
+  // Defensive on two fields that come off the wire.
+  //
+  // `insights[0]` was destructured unguarded and `meta.model` had .startsWith
+  // called on it directly, so a result carrying zero insights — or one missing
+  // model attribution — threw during render. There is no error boundary
+  // anywhere in this app, so that is not a broken card: it is a white screen
+  // where the whole page used to be, in front of a room. The server does try
+  // not to send such a result, but "the other side promised" is not a reason
+  // for the render path to be unable to survive one.
+  const [lead, ...rest] = audit.insights ?? []
   const live = audit.meta.mode === 'live'
-  const baseline = audit.meta.model.startsWith('keyword baseline')
+  const baseline = (audit.meta.model ?? '').startsWith('keyword baseline')
 
   return (
     <section className="section" id="live-audit" data-motion-group>
@@ -258,6 +267,18 @@ export function LiveAudit() {
 
         {error && <p className="audit__error">{error}</p>}
 
+        {!lead ? (
+          // A result with no insights is a real outcome — a corpus can fail to
+          // cluster above the noise floor — and saying so is the honest card.
+          // Rendering the insight block regardless is what turned that outcome
+          // into a white page.
+          <Card size="lg" className="insight__card">
+            <p className="prose">
+              Nothing clustered above the noise floor for {audit.meta.productName}. The reviews were
+              read; they did not agree on a theme often enough for a finding to be worth printing.
+            </p>
+          </Card>
+        ) : (
         <Card size="lg" className="insight__card">
           <div>
             <p className="insight__scope nums">{lead.scope}</p>
@@ -301,6 +322,7 @@ export function LiveAudit() {
             </ul>
           </div>
         </Card>
+        )}
 
         <ul className="insight__rest">
           {rest.map((item) => (
