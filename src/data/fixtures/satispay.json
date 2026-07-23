@@ -34,68 +34,75 @@
   ],
   "clusters": [
     {
-      "id": "unresponsive-customer-support",
-      "label": "Completely unreachable customer support",
-      "weight": 0.1644,
+      "id": "unresponsive-customer-support-and-chatbot-loops",
+      "label": "Unresponsive customer support and useless chatbot loops",
+      "weight": 0.1822,
       "sentiment": "negative",
       "promoted": true
     },
     {
-      "id": "delayed-transfers-and-recharges",
-      "label": "Extremely slow bank transfers and recharges",
-      "weight": 0.0622,
+      "id": "frozen-funds-and-slow-bank-transfers",
+      "label": "Frozen funds and excessively delayed bank transfers",
+      "weight": 0.1022,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "forced-budget-popups",
-      "label": "Aggressive and intrusive budget prompts",
-      "weight": 0.0267,
+      "id": "forced-budget-popups-and-aggressive-ui-prompts",
+      "label": "Forced budget popups and aggressive marketing interruptions",
+      "weight": 0.0711,
       "sentiment": "negative",
       "promoted": true
     },
     {
-      "id": "meal-vouchers-usability",
-      "label": "Broken and confusing meal voucher experience",
-      "weight": 0.0667,
+      "id": "cumbersome-meal-voucher-management-and-spending",
+      "label": "Cumbersome meal voucher management and unintended balance spending",
+      "weight": 0.0889,
       "sentiment": "negative",
       "promoted": true
     },
     {
-      "id": "account-deletion-barriers",
-      "label": "Unable to close accounts or remove data",
-      "weight": 0.0267,
+      "id": "unfulfilled-referral-promos-and-disputed-bonuses",
+      "label": "Unfulfilled referral promos and disputed promotional bonuses",
+      "weight": 0.0444,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "broken-referral-promos",
-      "label": "Unfulfilled welcome bonuses and referral rewards",
-      "weight": 0.04,
+      "id": "account-closure-difficulties-and-trapped-profiles",
+      "label": "Account closure difficulties and trapped user profiles",
+      "weight": 0.0178,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "unwanted-ui-clutter",
-      "label": "Cluttered interface and unwanted financial upsells",
+      "id": "authentication-and-document-verification-errors",
+      "label": "Authentication and document verification technical blockers",
       "weight": 0.0311,
       "sentiment": "negative",
+      "promoted": false
+    },
+    {
+      "id": "positive-convenience-and-daily-payment-praise",
+      "label": "Positive convenience and daily payment utility praise",
+      "weight": 0.2622,
+      "sentiment": "positive",
       "promoted": false
     }
   ],
   "insights": [
     {
-      "id": "support-automation-failure",
-      "title": "Automated support gatekeeping prevents resolution of urgent financial blocks.",
-      "scope": "37 of 225 reviews · 236 days · 11 app versions",
-      "summary": "Users experiencing frozen funds or missing transfers are forced to interact with automated bots that offer generic holding responses and never connect them to a human. This leaves customers stranded in financial distress without updates or valid avenues for recourse. The absence of an accessible escalation path breaks trust during critical moments involving personal funds. Relying purely on deflection mechanisms intensifies user anger rather than containing support tickets.",
+      "id": "automated-support-dead-ends-compound-financial-panic",
+      "title": "Automated support dead ends compound user panic during financial transactions.",
+      "scope": "41 of 225 reviews · 236 days · 12 app versions",
+      "summary": "Users experiencing delayed transfers or unexpected balance charges find themselves trapped in automated chatbot loops with no human escalation path. When queries receive generic automated responses promising agent follow-ups that never happen, panic escalates into hostility. The lack of an emergency contact channel or responsive helpdesk turns fixable technical hiccups into severe trust erosion. Reviewers emphasize that the inability to reach a live person makes unresolved account issues feel like theft.",
       "impact": [
         {
-          "value": "37",
+          "value": "41",
           "label": "reviews"
         },
         {
-          "value": "97%",
+          "value": "98%",
           "label": "rated 1 star"
         },
         {
@@ -110,30 +117,30 @@
           "source": "App Store · 2026-07-21 · v4.37.1"
         },
         {
-          "name": "SU",
-          "quote": "Premetto che utilizzo Satispay da diversi anni ma ultimamente ho notato che il servizio clienti gestito dalla loro IA è diventato pessimo. La storia è questo: ricevo un pagamento…",
-          "source": "App Store · 2026-07-19 · v4.37.1"
+          "name": "LU",
+          "quote": "Ti tolgono soldi dal tuo conto senza chiederti l’autorizzazione, mi hanno tolto 300€ chissà quando riavremo questi soldi , contatto l’assistenza ed è inesistente nessuno risponde!!",
+          "source": "App Store · 2026-07-21 · v4.37.1"
         },
         {
-          "name": "LG",
-          "quote": "avevo un bilancio di oltre 400 euro sul conto satistpay,ho deciso di muoverli sul mio conto corrente ,dopo 10 giorni è ancora in progress e ovviamente nessun accredito ,il…",
-          "source": "Google Play · 2026-06-28 · v4.36.0"
+          "name": "MA",
+          "quote": "Fino a una settimana fa avrei dato almeno 4 stelle tranquillamente, ma qualche giorno fa è successo un evento che mi ha fatto inevitabilmente abbassare la valutazione. Ho invitato…",
+          "source": "App Store · 2026-07-20 · v4.37.1"
         }
       ],
-      "recommendation": "Implement an in-app escalation trigger that automatically routes users to a human queue when a transaction has been delayed past the standard timeframe."
+      "recommendation": "Implement a direct ticketing escalation path to human agents for active transfer disputes, and remove the conversational AI dead ends from the help center."
     },
     {
-      "id": "meal-voucher-deduction-logic",
-      "title": "Meal voucher payment flows unintentionally draw from user bank balances instead of ticket funds.",
-      "scope": "15 of 225 reviews · 91 days · 7 app versions",
-      "summary": "Employees forced to use the platform for corporate welfare report that transactions deduct cash from their linked bank accounts rather than utilizing their available meal vouchers. The system lacks a clear mechanism to prioritize vouchers or allow manual selection at checkout, leading to unexpected out-of-pocket expenses. Users feel trapped because they cannot easily segment their corporate benefits from personal funds within the interface. This friction causes embarrassment at the register and discourages utilization of the benefit entirely.",
+      "id": "meal-voucher-integration-fails-to-prioritize-ticket-balances",
+      "title": "Meal voucher integration fails to prioritize ticket balances over linked bank funds.",
+      "scope": "20 of 225 reviews · 91 days · 7 app versions",
+      "summary": "Employees forced to receive corporate meal vouchers through the platform encounter extreme friction at checkout counters. The payment flow defaults to draining cash from personal bank accounts instead of drawing from available ticket balances, causing unexpected financial loss. Furthermore, locating participating stores requires cumbersome manual map searches due to poor local integration. Users ask for a clear manual toggle to prioritize voucher spending over stored cash.",
       "impact": [
         {
-          "value": "15",
+          "value": "20",
           "label": "reviews"
         },
         {
-          "value": "73%",
+          "value": "70%",
           "label": "rated 1 star"
         },
         {
@@ -153,29 +160,29 @@
           "source": "App Store · 2026-06-28 · v4.36.0"
         },
         {
-          "name": "GM",
-          "quote": "App inutile... la ditta per cui lavoro mi ha caricato sopra i buoni pasto e non riesco ad utilizzarli. Quelle poche volte che ci sono riuscito per puro caso, mi ha preso i soldi…",
-          "source": "Google Play · 2026-07-18 · v4.37.1"
+          "name": "SE",
+          "quote": "Ho 1200 euro di buoni pasto ma mi dice che il conto è vuoto o qlc di simile . Non rinnoverò mai più passo a Edenred connloro mai avuto questi problemi I",
+          "source": "App Store · 2026-06-10 · v4.35.0"
         }
       ],
-      "recommendation": "Add a clear payment source toggle at checkout that allows users to explicitly select meal vouchers before charging their linked bank account."
+      "recommendation": "Introduce a prominent payment selector switch that lets users explicitly choose meal vouchers over cash balances at checkout."
     },
     {
-      "id": "intrusive-budget-prompts",
-      "title": "Frequent mandatory budget prompts create a hostile user experience for restricted accounts.",
-      "scope": "6 of 225 reviews · 12 days · 3 app versions",
-      "summary": "Users who open the app strictly for specific purposes like viewing tickets or receiving employer loads are repeatedly confronted with full-screen popups demanding automatic budget setups. The prompts lack a permanent dismissal option, forcing users to repeatedly decline or close the overlay on every single launch. This aggressive marketing tactic feels predatory to customers who prefer manual control over their bank account transfers. Rather than driving adoption, it alienates users who rely on the platform under corporate obligation.",
+      "id": "forced-budget-topups-alienate-users-relying-on-alternative-funds",
+      "title": "Forced budget top-up prompts alienate users who only use the app for specific benefits.",
+      "scope": "16 of 225 reviews · 135 days · 5 app versions",
+      "summary": "Mandatory periodic popups demanding that users set and fund an automated spending budget disrupt the experience for customers who only keep the app for meal vouchers or targeted disbursements. Because there is no persistent dismissal toggle, the constant prompts feel aggressive and predatory, driving daily frustration. Users report unexpected direct debits from linked bank accounts without explicit confirmation. This aggressive marketing turns a utility app into an unwelcome annoyance.",
       "impact": [
         {
-          "value": "6",
+          "value": "16",
           "label": "reviews"
         },
         {
-          "value": "67%",
+          "value": "50%",
           "label": "rated 1 star"
         },
         {
-          "value": "v4.37.0",
+          "value": "v4.23.1",
           "label": "earliest in window"
         }
       ],
@@ -196,7 +203,7 @@
           "source": "App Store · 2026-07-15 · v4.37.0"
         }
       ],
-      "recommendation": "Include a permanent opt-out setting for recurring budget prompts and remove the blocking overlay upon opening the application."
+      "recommendation": "Add a permanent opt-out setting for recurring budget prompts and require explicit confirmation before initiating direct account debits."
     }
   ]
 }

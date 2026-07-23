@@ -43,60 +43,67 @@
   "clusters": [
     {
       "id": "ipad-cursor-jumping-and-typing-bugs",
-      "label": "iPad cursor jumping and text input obstruction",
-      "weight": 0.064,
+      "label": "iPad cursor jumping and text input failures",
+      "weight": 0.066,
       "sentiment": "negative",
       "promoted": true
     },
     {
-      "id": "forced-ai-integration-and-obtrusive-ui",
-      "label": "Forced AI features and obstructive bottom bar",
+      "id": "forced-ai-integration-and-cluttered-ui",
+      "label": "Forced AI features and intrusive UI placement",
       "weight": 0.09,
       "sentiment": "negative",
       "promoted": true
     },
     {
-      "id": "mobile-app-performance-lag-and-freezes",
-      "label": "Mobile app performance lag, crashes, and freezes",
-      "weight": 0.098,
+      "id": "missing-localization-for-ukrainian-and-other-languages",
+      "label": "Lack of Ukrainian and regional interface languages",
+      "weight": 0.028,
       "sentiment": "negative",
       "promoted": true
     },
     {
-      "id": "missing-interface-languages",
-      "label": "Lack of Ukrainian and other interface languages",
-      "weight": 0.034,
+      "id": "mobile-performance-lag-and-crashes",
+      "label": "Severe mobile lag, freezing, and loading failures",
+      "weight": 0.092,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "login-and-authentication-loops",
-      "label": "Login loops and forced sign-in hurdles",
-      "weight": 0.02,
+      "id": "app-launch-and-login-failures",
+      "label": "App launch crashes and authentication loops",
+      "weight": 0.03,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "critical-data-loss-and-missing-notes",
-      "label": "Critical data loss and disappearing notes",
-      "weight": 0.014,
+      "id": "data-loss-and-sync-failures",
+      "label": "Unexpected data loss and synchronization issues",
+      "weight": 0.016,
       "sentiment": "negative",
+      "promoted": false
+    },
+    {
+      "id": "steep-learning-curve-and-clunky-navigation",
+      "label": "Difficult onboarding and confusing navigation",
+      "weight": 0.042,
+      "sentiment": "neutral",
       "promoted": false
     }
   ],
   "insights": [
     {
-      "id": "ai-bar-ux-disruption",
-      "title": "Forced placement of generative AI elements disrupts core navigation and clutters the UI.",
-      "scope": "45 of 500 reviews · 194 days · 26 app versions",
-      "summary": "Recent layout revisions replace traditional navigation shortcuts, such as the home and search functions, with prominent, non-removable AI chat bars. Customers who rely on custom page layouts find their screen real estate heavily compromised by unsolicited tooling. Because there is no toggle to disable these elements, users feel alienated by aggressive feature promotion. This persistent overlay frequently leads to accidental taps and workflow friction.",
+      "id": "forced-ai-interface-clutter",
+      "title": "Mandatory AI search bars and persistent chat prompts obscure core navigation and workspace tools.",
+      "scope": "45 of 500 reviews · 194 days · 27 app versions",
+      "summary": "Recent updates replaced traditional navigation shortcuts and clean headers with prominent AI conversation bars that occupy valuable screen real estate. Customers express frustration that these elements cannot be dismissed or disabled through settings. Many users feel that pushing generative features interferes with their manual organization systems and routine workflows. Providing a toggle to hide or revert these UI additions would greatly improve user satisfaction.",
       "impact": [
         {
           "value": "45",
           "label": "reviews"
         },
         {
-          "value": "56%",
+          "value": "53%",
           "label": "rated 1 star"
         },
         {
@@ -111,76 +118,38 @@
           "source": "App Store · 2026-07-09 · v1.7.317"
         },
         {
-          "name": "NN",
-          "quote": "The Notion decision makers seem to have little respect for their customers. Despite having five paid Notion accounts, the app has a huge Notion AI search bar at the bottom that we…",
-          "source": "App Store · 2026-04-01 · v1.7.290"
+          "name": "PT",
+          "quote": "AI features are garbage. The search being AI first and actual page search in a smaller icon that requires two clicks is the worst UI design i’ve seen in any app ever. Horrific…",
+          "source": "App Store · 2026-05-31 · v1.7.309"
         },
         {
-          "name": "ZN",
-          "quote": "This has been an amazing app and such a boon to me. I was very frustrated and inconvenienced when they replaced the bottom bar, which used to have a home button on it, with a…",
-          "source": "App Store · 2026-03-17 · v1.7.287"
+          "name": "MH",
+          "quote": "There is a big obtrusive AI search bar at the bottom that I’m always accidentally pressing when going in between apps on my phone. There isn’t even an option to disable it… I just…",
+          "source": "App Store · 2026-04-03 · v1.7.292"
         }
       ],
-      "recommendation": "Introduce a user preference toggle in the settings menu to hide the bottom AI chat bar and restore the default navigation shortcuts."
+      "recommendation": "Add a user settings toggle to completely hide or disable the persistent AI chat bar and restore traditional navigation shortcuts."
     },
     {
-      "id": "mobile-app-lag-and-instability",
-      "title": "Mobile clients suffer from severe input lag, memory bloat, and frequent application freezes.",
-      "scope": "49 of 500 reviews · 159 days · 25 app versions",
-      "summary": "Routine interactions such as opening pages, scrolling through databases, and modifying text trigger noticeable slowdowns on smartphones. Many users report that long documents cause the application to become entirely unresponsive, necessitating repeated forced restarts. This instability severely degrades day-to-day productivity for individuals attempting quick captures on mobile devices. Consequently, customers lose confidence in the reliability of the local caching and synchronization layers.",
+      "id": "ipad-cursor-view-jump",
+      "title": "Typing on iPad causes the screen to auto-adjust and push the cursor completely out of view.",
+      "scope": "33 of 500 reviews · 172 days · 21 app versions",
+      "summary": "Users report that attempting to edit text or type using an external keyboard on tablet devices causes the viewport to jump downward or shift away from the active line. This layout bug renders the mobile editor virtually unusable for taking notes during lectures or meetings. Reviewers note that this behavior persists across multiple software updates without a fix. Restoring stable typing ergonomics on tablets is essential to prevent churn among mobile users.",
       "impact": [
         {
-          "value": "49",
+          "value": "33",
           "label": "reviews"
         },
         {
-          "value": "47%",
+          "value": "24%",
           "label": "rated 1 star"
         },
         {
-          "value": "↑1.7×",
+          "value": "↑2.0×",
           "label": "vs. first half of window"
         },
         {
-          "value": "v1.7.281",
-          "label": "earliest in window"
-        }
-      ],
-      "evidence": [
-        {
-          "name": "AL",
-          "quote": "When I first downloaded the app months ago and started using it, it was really good and was working very well. Lately, with all the new updates, it just seems to be having major…",
-          "source": "App Store · 2026-07-18 · v1.7.322"
-        },
-        {
-          "name": "R",
-          "quote": "The worst part about this app is that just when you start depending on it for something important it starts glitching in some new and horribly frustrating way. Don’t waste your…",
-          "source": "App Store · 2026-07-16 · v1.7.321"
-        },
-        {
-          "name": "DA",
-          "quote": "It is almost impossible to use Notion on iPad. Page icons are not loading, sometimes it lagging so badly I can’t even type simple text on pages. Often shows that I’m offline, but…",
-          "source": "App Store · 2026-05-15 · v1.7.304"
-        }
-      ],
-      "recommendation": "Optimize database rendering performance for long documents and streamline local cache management to eliminate memory leaks and frequent crashes."
-    },
-    {
-      "id": "ipad-view-port-scrolling-bug",
-      "title": "Typing on the iPad app causes the viewport to jump unexpectedly, obscuring the active line.",
-      "scope": "32 of 500 reviews · 161 days · 16 app versions",
-      "summary": "Users typing on tablets experience a severe rendering flaw where the screen auto-adjusts or scrolls away from the cursor position. This completely hides the text being entered and renders the application virtually unusable for document editing. The bug persists across multiple OS updates without resolution. Tablet users are forced to abandon the native client in favor of external browsers or desktop machines.",
-      "impact": [
-        {
-          "value": "32",
-          "label": "reviews"
-        },
-        {
-          "value": "28%",
-          "label": "rated 1 star"
-        },
-        {
-          "value": "v1.7.281",
+          "value": "v1.7.278",
           "label": "earliest in window"
         }
       ],
@@ -191,17 +160,55 @@
           "source": "App Store · 2026-05-26 · v1.7.308"
         },
         {
-          "name": "XE",
-          "quote": "Eigentlich liebe ich Notion und nutze es sowohl über Web, iPhone und iPad. Leider scheint es seit einiger Zeit viele Probleme mit der iPad Version zu geben. Bei Texteingabe friert…",
-          "source": "App Store · 2026-05-25 · v1.7.308"
+          "name": "RV",
+          "quote": "Great software, great usages for all sorts of people, BUT the mobile app just struggles with one critical bug that makes the whole thing unusable. When I’m typing, the screen…",
+          "source": "App Store · 2026-07-05 · v1.7.316"
         },
         {
-          "name": "YU",
-          "quote": "Whenever I type, the screen goes down. I hope this can be fixed.",
-          "source": "App Store · 2026-07-21 · v1.7.322"
+          "name": "KR",
+          "quote": "Update 21/06/26. Had to lower the rating because for the last month or so Notion stopped working properly with my iPad when I use a Bluetooth keyboard - the pages no longer allow…",
+          "source": "App Store · 2026-06-21 · v1.7.313"
         }
       ],
-      "recommendation": "Disable automatic viewport shifting during keyboard focus events and ensure the active typing line remains vertically pinned within the visible safe zone."
+      "recommendation": "Fix the auto-scroll and focus-following logic in the mobile text editor so the viewport remains locked on the cursor during typing."
+    },
+    {
+      "id": "missing-localization-support",
+      "title": "Absence of Ukrainian and other regional interface languages creates friction for international users.",
+      "scope": "14 of 500 reviews · 138 days · 13 app versions",
+      "summary": "A vocal group of international customers highlights the lack of native language support in the mobile and desktop clients. Navigating complex menus and hierarchical settings in English requires extra mental translation, especially during quick note-taking tasks. Reviewers explicitly state they would engage more deeply or upgrade if their native language were available in the interface. Introducing localized language options would open up accessibility to wider regional user bases.",
+      "impact": [
+        {
+          "value": "14",
+          "label": "reviews"
+        },
+        {
+          "value": "36%",
+          "label": "rated 1 star"
+        },
+        {
+          "value": "v1.7.285",
+          "label": "earliest in window"
+        }
+      ],
+      "evidence": [
+        {
+          "name": "SZ",
+          "quote": "there is no Ukrainian language, it's very terrible",
+          "source": "App Store · 2026-07-20 · v1.7.322"
+        },
+        {
+          "name": "НН",
+          "quote": "На жаль, української немає, налаштування всі англійською. Коли треба швидко щось записати, ти мусиш перекласти в голові текст, аби зорієнтуватися, що та стрічка в додатку означає.…",
+          "source": "App Store · 2026-06-28 · v1.7.315"
+        },
+        {
+          "name": "AN",
+          "quote": "Notion, що це таке? чому ви не перекладаєте ваш додаток на українську мову? складно?!",
+          "source": "Google Play · 2026-04-29 · v0.6.3815"
+        }
+      ],
+      "recommendation": "Add interface localization support for Ukrainian and other requested regional languages."
     }
   ]
 }
