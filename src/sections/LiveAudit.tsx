@@ -4,8 +4,10 @@ import { Card } from '../ui/Card'
 import { SectionHead } from '../ui/SectionHead'
 import { HEADINGS } from '../data/content'
 import {
+  BAKED_TARGETS,
   CACHED_AUDIT,
   fetchTargets,
+  lookupBaked,
   probeAuditServer,
   runAudit,
   type AuditResult,
@@ -68,12 +70,36 @@ export function LiveAudit() {
     if (!query || running) return
 
     abort.current?.abort()
-    const controller = new AbortController()
-    abort.current = controller
-
-    setRunning(true)
     setError(null)
     setLog([])
+
+    // The bundle answers first. A baked name resolves with no network at all,
+    // which is what makes this work on a phone that scanned the QR — and it is
+    // also strictly better on stage, where a cached card appearing instantly
+    // beats the same card after a minute of watching a log.
+    //
+    // The card stamps itself "Cached run", so nothing here pretends to be a
+    // search that did not happen.
+    const baked = lookupBaked(query)
+    if (baked) {
+      setAudit(baked)
+      return
+    }
+
+    // Nothing baked matches, and there is no server to ask. Say so plainly and
+    // leave the previous audit alone rather than implying it is the answer to
+    // what was just typed.
+    if (!canRun) {
+      setError(
+        `No audit of “${query}” travels with this page. The three above were computed in advance; ` +
+          `auditing anything else runs the pipeline live, which needs the run server.`,
+      )
+      return
+    }
+
+    const controller = new AbortController()
+    abort.current = controller
+    setRunning(true)
 
     try {
       for await (const event of runAudit(query, controller.signal)) {
@@ -91,6 +117,14 @@ export function LiveAudit() {
     }
   }
 
+  // Baked names first — those answer with no network and are what a phone that
+  // scanned the QR can actually use. A server adds whatever else it has baked,
+  // deduplicated by slug so the same target does not appear twice.
+  const chips: AuditTarget[] = [
+    ...BAKED_TARGETS,
+    ...targets.filter((t) => !BAKED_TARGETS.some((b) => b.slug === t.slug)),
+  ]
+
   const [lead, ...rest] = audit.insights
   const live = audit.meta.mode === 'live'
   const baseline = audit.meta.model.startsWith('keyword baseline')
@@ -100,42 +134,48 @@ export function LiveAudit() {
       <div className="container">
         <SectionHead eyebrow={liveAudit.eyebrow} title={liveAudit.title} lead={liveAudit.lead} />
 
-        {canRun && (
-          <>
-            <div className="audit__search" data-motion="rise">
-              <input
-                aria-label="Product to audit"
-                className="audit__field"
-                value={product}
-                disabled={running}
-                placeholder="Name a product, an app, or a place…"
-                onChange={(e) => setProduct(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && run(product)}
-              />
-              <Button onClick={() => run(product)}>{running ? 'Reading…' : 'Read it'}</Button>
-            </div>
+        {/* The search bar is always here now, not only when a run server
+            answered. The page is handed round on phones by QR, where a server
+            is unreachable by construction — and a page that shows a reader one
+            audit and no way to ask for another is a screenshot, not a tool.
+            Three audits ship in the bundle and answer instantly with no
+            network at all; a reachable server upgrades that to anything. */}
+        <div className="audit__search" data-motion="rise">
+          <input
+            aria-label="Product to audit"
+            className="audit__field"
+            value={product}
+            disabled={running}
+            placeholder={canRun ? 'Name a product, an app, or a place…' : 'Trenitalia, Satispay, Notion…'}
+            onChange={(e) => setProduct(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && run(product)}
+          />
+          <Button onClick={() => run(product)}>{running ? 'Reading…' : 'Read it'}</Button>
+        </div>
 
-            {targets.length > 0 && (
-              <p className="audit__suggest" data-motion="rise">
-                <span>Instant:</span>
-                {targets.map((t) => (
-                  <button
-                    key={t.slug}
-                    type="button"
-                    className="audit__chip"
-                    disabled={running}
-                    onClick={() => {
-                      setProduct(t.productName)
-                      run(t.productName)
-                    }}
-                  >
-                    {t.productName}
-                  </button>
-                ))}
-                <span>— anything else runs live, in about a minute.</span>
-              </p>
-            )}
-          </>
+        {chips.length > 0 && (
+          <p className="audit__suggest" data-motion="rise">
+            <span>Instant:</span>
+            {chips.map((t) => (
+              <button
+                key={t.slug}
+                type="button"
+                className="audit__chip"
+                disabled={running}
+                onClick={() => {
+                  setProduct(t.productName)
+                  run(t.productName)
+                }}
+              >
+                {t.productName}
+              </button>
+            ))}
+            <span>
+              {canRun
+                ? '— anything else runs live, in about a minute.'
+                : '— these three are computed and travel with the page. Auditing anything else needs the run server.'}
+            </span>
+          </p>
         )}
 
         {/* Only on paper: the printed audit leaves as its own document and has
