@@ -35,109 +35,78 @@
   "clusters": [
     {
       "id": "payment-failures-and-phantom-charges",
-      "label": "Payment failures and phantom bank charges without ticket generation",
-      "weight": 0.0838,
+      "label": "Payment processing errors and unexpected charges",
+      "weight": 0.0514,
       "sentiment": "negative",
       "promoted": true
     },
     {
-      "id": "authentication-and-login-roadblocks",
-      "label": "Authentication failures, credential rejection, and password reset loops",
+      "id": "authentication-and-login-lockouts",
+      "label": "Account login failures and credential rejection",
+      "weight": 0.0486,
+      "sentiment": "negative",
+      "promoted": true
+    },
+    {
+      "id": "missing-tickets-and-wallet-failures",
+      "label": "Purchased tickets missing from app storage or wallet",
+      "weight": 0.0405,
+      "sentiment": "negative",
+      "promoted": true
+    },
+    {
+      "id": "ui-redesign-and-performance-degradation",
+      "label": "App redesign creates severe lag and navigation confusion",
       "weight": 0.0541,
       "sentiment": "negative",
-      "promoted": true
+      "promoted": false
     },
     {
-      "id": "ui-clutter-and-redesign-friction",
-      "label": "Redesign complexity, information overload, and slow performance",
-      "weight": 0.0757,
-      "sentiment": "negative",
-      "promoted": true
-    },
-    {
-      "id": "system-instability-and-server-errors",
-      "label": "Frequent app crashes, unhandled exceptions, and server error messages",
-      "weight": 0.0892,
+      "id": "server-errors-and-frequent-crashes",
+      "label": "Constant server errors and unexpected app crashes",
+      "weight": 0.0514,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "ticket-retrieval-and-wallet-sync-issues",
-      "label": "Purchased tickets disappearing and failing to sync with mobile wallets",
-      "weight": 0.0568,
+      "id": "purchase-lockout-and-unrealistic-rules",
+      "label": "Unfair purchase restrictions near departure time",
+      "weight": 0.0162,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "last-minute-booking-and-timing-lockouts",
-      "label": "Arbitrary purchase cutoffs blocking bookings before departure",
-      "weight": 0.027,
+      "id": "localization-and-language-bugs",
+      "label": "Language settings ignored and incorrect localizations",
+      "weight": 0.0297,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "language-localization-and-accessibility-failures",
-      "label": "Forced system language matching, translation errors, and accessibility blocks",
-      "weight": 0.0405,
+      "id": "unreliable-infomobility-and-tracking",
+      "label": "Incorrect train tracking and misleading schedule data",
+      "weight": 0.0297,
       "sentiment": "negative",
       "promoted": false
     }
   ],
   "insights": [
     {
-      "id": "payment-gateway-silent-failures",
-      "title": "Payment gateways report errors to the app while successfully debiting user accounts, leaving passengers without tickets.",
-      "scope": "31 of 370 reviews · 187 days · 6 app versions",
-      "summary": "Users frequently attempt to purchase tickets through integrated payment providers, only to encounter an error message claiming the transaction failed. However, their banking institutions confirm that funds were successfully debited from their accounts. Because the app fails to generate the booking or display the ticket after charging the user, travellers are forced to buy tickets a second time or face fines onboard. This discrepancy severely damages trust in the e-commerce infrastructure. Restoring transaction reliability requires aligning frontend payment state handlers with backend gateway confirmations.",
+      "id": "auth-sync-failure-after-password-change",
+      "title": "Credential updates made on external channels fail to synchronize with the mobile application backend.",
+      "scope": "18 of 370 reviews · 189 days · 10 app versions",
+      "summary": "Customers attempting to log into the application find their credentials rejected despite successfully accessing the official website with the exact same details. Resetting passwords via web portals or recovery flows frequently results in persistent authentication errors exclusively within the mobile client. Users report being trapped in infinite loops of forced password changes that subsequently fail validation. This points to a severe synchronization gap between central user databases and mobile authentication tokens.",
       "impact": [
         {
-          "value": "31",
+          "value": "18",
           "label": "reviews"
         },
         {
-          "value": "84%",
+          "value": "89%",
           "label": "rated 1 star"
         },
         {
           "value": "v12.1000.0",
-          "label": "earliest in window"
-        }
-      ],
-      "evidence": [
-        {
-          "name": "MX",
-          "quote": "Ho acquistato un biglietto, i soldi sono stati sottratti dal mio conto ma senza biglietto. Ancora devo ricevere il rimborso",
-          "source": "App Store · 2026-07-05 · v13.400.0"
-        },
-        {
-          "name": "NZ",
-          "quote": "Più volte mi è successo che l'app si blocchi e non mi dà il biglietto acquistato anche se dalla carta i soldi sono stati presi . mi è successo anche comprando biglietti costosi…",
-          "source": "Google Play · 2026-06-09 · v13.300.0"
-        },
-        {
-          "name": "LE",
-          "quote": "L’app di Trenitalia era una delle poche cose che funzionava decentemente. L’hanno aggiornata e adesso è completamente inutilizzabile. Schermate tutt’altro che intuitive, fasi di…",
-          "source": "App Store · 2026-06-03 · v13.300.1"
-        }
-      ],
-      "recommendation": "Implement robust webhook handling and transaction reconciliation to ensure that if a payment succeeds at the bank, the order is automatically fulfilled in the app without requiring a manual repurchase."
-    },
-    {
-      "id": "authentication-state-desynchronization",
-      "title": "User authentication credentials stored or modified on the website are persistently rejected by the mobile application.",
-      "scope": "20 of 370 reviews · 148 days · 10 app versions",
-      "summary": "Customers attempting to log into the app find their credentials repeatedly rejected, even immediately after successfully resetting their passwords or logging into the web platform without issues. Users report being trapped in endless password reset loops or encountering generic error prompts during login. This breakdown indicates a severe desynchronization between the mobile application backend and the primary user database. Resolving this requires unifying identity verification pathways across web and mobile channels.",
-      "impact": [
-        {
-          "value": "20",
-          "label": "reviews"
-        },
-        {
-          "value": "90%",
-          "label": "rated 1 star"
-        },
-        {
-          "value": "v13.000.0",
           "label": "earliest in window"
         }
       ],
@@ -158,45 +127,83 @@
           "source": "Google Play · 2026-07-17 · v13.400.0"
         }
       ],
-      "recommendation": "Audit the mobile authentication API endpoints and token validation logic to ensure immediate synchronization with the central user database."
+      "recommendation": "Audit and fix backend session token propagation so that credentials updated on web channels are immediately accepted by the mobile client without triggering forced reset loops."
     },
     {
-      "id": "navigation-and-performance-regression",
-      "title": "Recent UI redesigns introduced severe latency, complex navigation paths, and information overload for everyday commuters.",
-      "scope": "28 of 370 reviews · 82 days · 6 app versions",
-      "summary": "Following recent visual updates, users experience extreme sluggishness when loading pages, searching for trains, or attempting to view saved tickets. Essential functions that were previously straightforward now require navigating multiple redundant screens and dealing with unnecessary promotional overlays. Commuters who rely on fast interactions are heavily penalized by these design regressions, frequently missing trains while trying to complete basic actions. Reverting unnecessary UI complexity will restore critical task efficiency.",
+      "id": "payment-gateway-silent-failures",
+      "title": "Payment systems report transaction failure on the interface while successfully debiting user accounts.",
+      "scope": "19 of 370 reviews · 76 days · 5 app versions",
+      "summary": "Users repeatedly experience a scenario where alternative payment methods and standard cards trigger an on-screen error message indicating that checkout has failed. Despite this interface rejection, the underlying bank or mobile payment provider confirms that funds have been deducted from the user. Because the application fails to generate a ticket or booking reference during these events, travelers are left stranded without proof of purchase and forced to buy tickets again or risk penalties. The disconnect between gateway responses and app state handling breaks core commerce reliability.",
       "impact": [
         {
-          "value": "28",
+          "value": "19",
           "label": "reviews"
         },
         {
-          "value": "64%",
+          "value": "74%",
           "label": "rated 1 star"
         },
         {
-          "value": "v13.200.2",
+          "value": "v13.200.0",
           "label": "earliest in window"
         }
       ],
       "evidence": [
         {
-          "name": "MI",
-          "quote": "la nuova app è poco pratica ed intuitiva rispetto alla precedente versione. È inoltre lenta nel effettuare il cambio treno, gli acquisti, e nell’aprire la schermata biglietto per…",
-          "source": "App Store · 2026-06-30 · v13.400.0"
+          "name": "MX",
+          "quote": "Ho acquistato un biglietto, i soldi sono stati sottratti dal mio conto ma senza biglietto. Ancora devo ricevere il rimborso",
+          "source": "App Store · 2026-07-05 · v13.400.0"
         },
         {
-          "name": "PA",
-          "quote": "Dopo il nuovo aggiornamento la UX è imbarazzante. Al netto di piccoli bug, tutto il mondo interfaccia é stato nettamente complicato con un overload informativo completamente…",
-          "source": "App Store · 2026-06-12 · v13.000.2"
+          "name": "RJ",
+          "quote": "update 18th May 2026. still The same. I paid and I don't get the ticket. The new app has alot of bugs. the tickets don't update, even after the payment has been deducted it…",
+          "source": "Google Play · 2026-05-18 · v13.200.0"
         },
         {
-          "name": "DT",
-          "quote": "The new app is horrendous - the ticket and searches take forever to load, it's absolutely maddening. Did Trenitalia hire a 13 year old to design the app ? UPDATE 6/2026 The app…",
-          "source": "Google Play · 2026-06-18 · v13.300.0"
+          "name": "PE",
+          "quote": "App non più affidabile. 8 volte su 10 genera l'addebito del biglietto (salvo successivo riaccreditamento) ma non il biglietto. Lo sanno bene i controllori, sempre comprensivi a…",
+          "source": "Google Play · 2026-07-03 · v13.400.0"
         }
       ],
-      "recommendation": "Streamline the checkout and ticket display flows to minimize navigation steps and remove non-essential UI elements that slow down page loading times."
+      "recommendation": "Implement idempotent transaction handling and an automatic verification state machine that checks pending charges against backend issuance before displaying failure screens."
+    },
+    {
+      "id": "local-storage-ticket-disappearance",
+      "title": "Valid tickets stored locally vanish or crash the interface when users open travel management sections.",
+      "scope": "15 of 370 reviews · 71 days · 5 app versions",
+      "summary": "Travelers relying on the application to display active bookings find that their saved trips or multi-ride carnets disappear entirely from the profile interface. Attempting to access the journeys section or manually retrieve tickets via confirmation codes frequently triggers application crashes or infinite loading loops. When passengers cannot pull up their digital tickets during onboard inspections, they face severe friction and potential disputes with staff. The instability of local cache synchronization directly threatens ticket presentation.",
+      "impact": [
+        {
+          "value": "15",
+          "label": "reviews"
+        },
+        {
+          "value": "53%",
+          "label": "rated 1 star"
+        },
+        {
+          "value": "4%",
+          "label": "of all negative feedback"
+        }
+      ],
+      "evidence": [
+        {
+          "name": "RA",
+          "quote": "Puntualmente cerco du prenotare dei biglietti sul portale. Ogni volta il biglietto scompare dai miei biglietti salvati. Provo anche con il codice di recupero ma non riesce a…",
+          "source": "App Store · 2026-06-17 · v13.000.2"
+        },
+        {
+          "name": "LP",
+          "quote": "Pessima. Ha fatto un aggiornamento e da mio profilo è sparito il carnet con cinque viaggi da riscuotere e non me ne fa comprare di nuovi. assistenza via chat improponibile.…",
+          "source": "Google Play · 2026-06-30 · v13.400.0"
+        },
+        {
+          "name": "FB",
+          "quote": "Applicazione imbarazzante, peggiora anziché migliorare, legnosissima nei pagamenti per l'acquisto dei biglietti e poi se riesci ad acquistarli non li associa nei miei viaggi...…",
+          "source": "Google Play · 2026-07-14 · v13.400.0"
+        }
+      ],
+      "recommendation": "Isolate the ticket rendering view from main network calls with a robust local fallback cache to ensure offline accessibility of valid purchases."
     }
   ]
 }

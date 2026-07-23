@@ -199,7 +199,11 @@ export function LiveAudit() {
               the exact failure the rest of this page argues against, and on
               paper it travels without anyone present to correct it. */}
           {audit.meta.volumeTotal.toLocaleString('en-US')} public reviews from{' '}
-          {audit.sources.map((s) => s.name).join(', ')} over {audit.meta.windowDays} days, to{' '}
+          {audit.sources.map((s) => s.name).join(', ')}
+          {/* A window of zero means none could be established — pasted feedback
+              and most Google Maps rows carry no dates — so the clause is left
+              out rather than asserting a span nothing measured. */}
+          {audit.meta.windowDays > 0 && ` over ${audit.meta.windowDays} days`}, to{' '}
           {audit.meta.generatedAt.slice(0, 10)}. Every figure computed from the review rows; every
           quote verbatim. Themes and wording by {audit.meta.model}.
         </p>
@@ -210,7 +214,8 @@ export function LiveAudit() {
           <p className="audit__stamp">
             <span className="audit__dot" aria-hidden="true" />
             {live ? 'Live' : 'Cached run'} · {audit.meta.productName} ·{' '}
-            {audit.meta.volumeTotal.toLocaleString('en-US')} reviews · {audit.meta.windowDays} days
+            {audit.meta.volumeTotal.toLocaleString('en-US')} reviews
+            {audit.meta.windowDays > 0 && ` · ${audit.meta.windowDays} days`}
             {baseline && ' · keyword baseline'}
             {/* Which model, and where it ran. The server has always computed
                 this string — "Mistral mistral-large-latest · EU (Paris)" —
@@ -246,12 +251,24 @@ export function LiveAudit() {
             {audit.sources.length > 1 && (
               <>
                 {' · from '}
-                {audit.sources.map((s, i) => (
-                  <span key={s.id}>
-                    {i > 0 && ', '}
-                    {s.name} {Math.round(s.share * 100)}%
-                  </span>
-                ))}
+                {/* Rounded independently, these summed to 101% — two sources at
+                    50.4% each both round up, and a reader who adds them finds
+                    the page contradicting itself on the one line whose whole
+                    job is to account for the corpus. The last share is the
+                    remainder of the others instead of its own rounding. */}
+                {audit.sources.map((s, i, arr) => {
+                  const rounded = Math.round(s.share * 100)
+                  const others = arr
+                    .slice(0, -1)
+                    .reduce((sum, x) => sum + Math.round(x.share * 100), 0)
+                  const value = i === arr.length - 1 ? Math.max(0, 100 - others) : rounded
+                  return (
+                    <span key={s.id}>
+                      {i > 0 && ', '}
+                      {s.name} {value}%
+                    </span>
+                  )
+                })}
               </>
             )}
           </p>
@@ -310,8 +327,13 @@ export function LiveAudit() {
             </ul>
           </div>
 
+          {/* The heading only earns its place when there is evidence under it.
+              An insight whose quotes were all filtered out — every candidate
+              review too short to carry one — rendered the word "Evidence" over
+              nothing, which on a card arguing that claims must show their
+              working is the worst possible empty state. */}
           <div>
-            <p className="insight__evidence-head">Evidence</p>
+            {lead.evidence.length > 0 && <p className="insight__evidence-head">Evidence</p>}
             <ul className="insight__quotes">
               {lead.evidence.map((item) => (
                 <li className="insight__quote" key={item.source + item.quote.slice(0, 24)}>

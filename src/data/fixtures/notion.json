@@ -43,102 +43,60 @@
   "clusters": [
     {
       "id": "ipad-cursor-jumping-and-typing-bugs",
-      "label": "iPad cursor jumping and text input failures",
-      "weight": 0.032,
+      "label": "iPad cursor jumping and text input obstruction",
+      "weight": 0.064,
       "sentiment": "negative",
       "promoted": true
     },
     {
-      "id": "forced-ai-integration-and-cluttered-ui",
-      "label": "Forced AI features cluttering the interface",
-      "weight": 0.066,
+      "id": "forced-ai-integration-and-obtrusive-ui",
+      "label": "Forced AI features and obstructive bottom bar",
+      "weight": 0.09,
       "sentiment": "negative",
       "promoted": true
     },
     {
-      "id": "mobile-app-lag-freezes-and-crashes",
-      "label": "Severe mobile app lag, freezes, and crashes",
-      "weight": 0.104,
+      "id": "mobile-app-performance-lag-and-freezes",
+      "label": "Mobile app performance lag, crashes, and freezes",
+      "weight": 0.098,
       "sentiment": "negative",
       "promoted": true
     },
     {
-      "id": "missing-local-language-support",
-      "label": "Lack of Ukrainian and other local language interfaces",
-      "weight": 0.032,
+      "id": "missing-interface-languages",
+      "label": "Lack of Ukrainian and other interface languages",
+      "weight": 0.034,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "authentication-and-login-loops",
-      "label": "Broken authentication and login loops",
-      "weight": 0.016,
+      "id": "login-and-authentication-loops",
+      "label": "Login loops and forced sign-in hurdles",
+      "weight": 0.02,
       "sentiment": "negative",
       "promoted": false
     },
     {
-      "id": "notes-disappearing-and-data-loss",
-      "label": "Disappearing notes and severe data loss",
-      "weight": 0.016,
+      "id": "critical-data-loss-and-missing-notes",
+      "label": "Critical data loss and disappearing notes",
+      "weight": 0.014,
       "sentiment": "negative",
       "promoted": false
     }
   ],
   "insights": [
     {
-      "id": "mobile-performance-degradation-and-freezes",
-      "title": "Progressive performance degradation causes persistent lagging, freezing, and forced app restarts during editing sessions.",
-      "scope": "52 of 500 reviews · 159 days · 25 app versions",
-      "summary": "Mobile users experience significant slowdowns, interface unresponsiveness, and unexpected crashes when editing documents or managing databases. Many report having to force-close and relaunch the application multiple times during a single session to restore basic interactivity. These stability issues disproportionately impact users handling larger pages or trying to perform rapid offline capture. As performance continues to decline with successive updates, customer trust is eroded.",
+      "id": "ai-bar-ux-disruption",
+      "title": "Forced placement of generative AI elements disrupts core navigation and clutters the UI.",
+      "scope": "45 of 500 reviews · 194 days · 26 app versions",
+      "summary": "Recent layout revisions replace traditional navigation shortcuts, such as the home and search functions, with prominent, non-removable AI chat bars. Customers who rely on custom page layouts find their screen real estate heavily compromised by unsolicited tooling. Because there is no toggle to disable these elements, users feel alienated by aggressive feature promotion. This persistent overlay frequently leads to accidental taps and workflow friction.",
       "impact": [
         {
-          "value": "52",
+          "value": "45",
           "label": "reviews"
         },
         {
-          "value": "37%",
-          "label": "rated 1 star"
-        },
-        {
-          "value": "↑2.1×",
-          "label": "vs. first half of window"
-        },
-        {
-          "value": "v1.7.281",
-          "label": "earliest in window"
-        }
-      ],
-      "evidence": [
-        {
-          "name": "R",
-          "quote": "The worst part about this app is that just when you start depending on it for something important it starts glitching in some new and horribly frustrating way. Don’t waste your…",
-          "source": "App Store · 2026-07-16 · v1.7.321"
-        },
-        {
-          "name": "MQ",
-          "quote": "Consistently has been one of the most laggy and buggy apps on my phone. Lots of features, but the core functionality of just editing a file takes so long as nothing seems to be…",
-          "source": "Google Play · 2026-07-11 · v0.6.3995"
-        },
-        {
-          "name": "PM",
-          "quote": "i’ll be typing in a page and then all of a sudden it won’t let me type or paste anything. i go back (it won’t even let me hit the back button, I have to swipe back) and try to…",
-          "source": "App Store · 2026-05-15 · v1.7.304"
-        }
-      ],
-      "recommendation": "Optimize database rendering and local caching routines to eliminate UI freezes and reduce memory overhead on mobile devices."
-    },
-    {
-      "id": "forced-ai-interface-disrupts-navigation",
-      "title": "Forced and unremovable AI prompt bars obscure navigation controls and frustrate users who prefer a clean interface.",
-      "scope": "33 of 500 reviews · 194 days · 20 app versions",
-      "summary": "Recent updates have replaced traditional navigation shortcuts, such as the home and favorite buttons, with prominent generative assistant bars at the bottom of the screen. Users report that these persistent elements take up valuable screen estate and are frequently tapped by accident during daily workflows. Because there is no toggle in settings to hide or disable these features, customers feel the software is prioritizing promotion over core usability. This intrusive layout change alienates long-standing supporters who rely on custom, distraction-free workspaces.",
-      "impact": [
-        {
-          "value": "33",
-          "label": "reviews"
-        },
-        {
-          "value": "52%",
+          "value": "56%",
           "label": "rated 1 star"
         },
         {
@@ -153,30 +111,72 @@
           "source": "App Store · 2026-07-09 · v1.7.317"
         },
         {
-          "name": "AS",
-          "quote": "used to love notion! it was my favorite place to write and plan, but the focus on ai completely ruined the layout that made this app so awesome. i don’t mind the idea of ai being…",
-          "source": "App Store · 2026-05-24 · v1.7.308"
+          "name": "NN",
+          "quote": "The Notion decision makers seem to have little respect for their customers. Despite having five paid Notion accounts, the app has a huge Notion AI search bar at the bottom that we…",
+          "source": "App Store · 2026-04-01 · v1.7.290"
         },
         {
-          "name": "LB",
-          "quote": "tbh it was really good before the AI thing. now they’ve defaulted the search bar to an “ask AI” bar and minimized the search. i find it extremely annoying and it’s crazy how such…",
-          "source": "App Store · 2026-05-17 · v1.7.304"
+          "name": "ZN",
+          "quote": "This has been an amazing app and such a boon to me. I was very frustrated and inconvenienced when they replaced the bottom bar, which used to have a home button on it, with a…",
+          "source": "App Store · 2026-03-17 · v1.7.287"
         }
       ],
-      "recommendation": "Add a user settings toggle to hide assistant search bars and restore quick-navigation shortcuts to the bottom toolbar."
+      "recommendation": "Introduce a user preference toggle in the settings menu to hide the bottom AI chat bar and restore the default navigation shortcuts."
     },
     {
-      "id": "ipad-typing-bug-renders-app-unusable",
-      "title": "A severe text input bug causes the iPad screen to jump and hide active typing, rendering the mobile experience unusable.",
-      "scope": "16 of 500 reviews · 160 days · 10 app versions",
-      "summary": "Users utilizing iPads find themselves unable to see what they are typing because the display automatically scrolls or shifts downward away from the cursor. This defect breaks core note-taking capabilities and forces tablet users to abandon the mobile app entirely in favor of web or desktop alternatives. Despite repeated updates, the focus jump persists across multiple operating system versions, frustrating students and professionals alike. Without a fix for this layout behavior, the mobile app remains effectively broken for tablet owners.",
+      "id": "mobile-app-lag-and-instability",
+      "title": "Mobile clients suffer from severe input lag, memory bloat, and frequent application freezes.",
+      "scope": "49 of 500 reviews · 159 days · 25 app versions",
+      "summary": "Routine interactions such as opening pages, scrolling through databases, and modifying text trigger noticeable slowdowns on smartphones. Many users report that long documents cause the application to become entirely unresponsive, necessitating repeated forced restarts. This instability severely degrades day-to-day productivity for individuals attempting quick captures on mobile devices. Consequently, customers lose confidence in the reliability of the local caching and synchronization layers.",
       "impact": [
         {
-          "value": "16",
+          "value": "49",
           "label": "reviews"
         },
         {
-          "value": "38%",
+          "value": "47%",
+          "label": "rated 1 star"
+        },
+        {
+          "value": "↑1.7×",
+          "label": "vs. first half of window"
+        },
+        {
+          "value": "v1.7.281",
+          "label": "earliest in window"
+        }
+      ],
+      "evidence": [
+        {
+          "name": "AL",
+          "quote": "When I first downloaded the app months ago and started using it, it was really good and was working very well. Lately, with all the new updates, it just seems to be having major…",
+          "source": "App Store · 2026-07-18 · v1.7.322"
+        },
+        {
+          "name": "R",
+          "quote": "The worst part about this app is that just when you start depending on it for something important it starts glitching in some new and horribly frustrating way. Don’t waste your…",
+          "source": "App Store · 2026-07-16 · v1.7.321"
+        },
+        {
+          "name": "DA",
+          "quote": "It is almost impossible to use Notion on iPad. Page icons are not loading, sometimes it lagging so badly I can’t even type simple text on pages. Often shows that I’m offline, but…",
+          "source": "App Store · 2026-05-15 · v1.7.304"
+        }
+      ],
+      "recommendation": "Optimize database rendering performance for long documents and streamline local cache management to eliminate memory leaks and frequent crashes."
+    },
+    {
+      "id": "ipad-view-port-scrolling-bug",
+      "title": "Typing on the iPad app causes the viewport to jump unexpectedly, obscuring the active line.",
+      "scope": "32 of 500 reviews · 161 days · 16 app versions",
+      "summary": "Users typing on tablets experience a severe rendering flaw where the screen auto-adjusts or scrolls away from the cursor position. This completely hides the text being entered and renders the application virtually unusable for document editing. The bug persists across multiple OS updates without resolution. Tablet users are forced to abandon the native client in favor of external browsers or desktop machines.",
+      "impact": [
+        {
+          "value": "32",
+          "label": "reviews"
+        },
+        {
+          "value": "28%",
           "label": "rated 1 star"
         },
         {
@@ -186,22 +186,22 @@
       ],
       "evidence": [
         {
-          "name": "YU",
-          "quote": "Whenever I type, the screen goes down. I hope this can be fixed.",
-          "source": "App Store · 2026-07-21 · v1.7.322"
-        },
-        {
           "name": "CR",
           "quote": "geht seit ein paar Versionen nicht mehr sinnvoll auf dem Ipad. Cursor springt beim schreiben auf den Ipad Pro 11 Zoll (M1) immer nach oben weg und ist nicht sichtbar.",
           "source": "App Store · 2026-05-26 · v1.7.308"
         },
         {
-          "name": "CL",
-          "quote": "Depuis le 17 mars toujours le même problème sur iPad avec iOS. Impossible de rédiger quelque chose car le texte remonte et l’on ne peut voir ce qu’on écrit. Il y a pourtant eu…",
-          "source": "App Store · 2026-04-08 · v1.7.294"
+          "name": "XE",
+          "quote": "Eigentlich liebe ich Notion und nutze es sowohl über Web, iPhone und iPad. Leider scheint es seit einiger Zeit viele Probleme mit der iPad Version zu geben. Bei Texteingabe friert…",
+          "source": "App Store · 2026-05-25 · v1.7.308"
+        },
+        {
+          "name": "YU",
+          "quote": "Whenever I type, the screen goes down. I hope this can be fixed.",
+          "source": "App Store · 2026-07-21 · v1.7.322"
         }
       ],
-      "recommendation": "Fix the view-adjustment logic on tablet interfaces so the cursor position remains vertically centered and visible while the system keyboard is active."
+      "recommendation": "Disable automatic viewport shifting during keyboard focus events and ensure the active typing line remains vertically pinned within the visible safe zone."
     }
   ]
 }
