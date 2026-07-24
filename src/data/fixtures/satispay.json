@@ -88,7 +88,7 @@
       "id": "prevent-silent-fund-freezes",
       "title": "Delayed transfers and uncommunicative processing create severe financial distress and churn.",
       "scope": "21 of 225 reviews · 236 days · 10 app versions",
-      "summary": "Users trying to withdraw funds or complete top-ups find their money stuck in limbo for extended periods without warning or clear status updates. When these panicked customers seek reassurance, they encounter an automated chatbot loop that cannot resolve transaction blocks. This silence destroys trust, pushing long-time users to abandon the platform and actively warn others against using it for any real financial needs. Resolving the lack of visibility during bank clearing is critical to preventing immediate account desertion.",
+      "summary": "Users trying to withdraw funds or complete top-ups find their money stuck in limbo for extended periods without warning or clear status updates. When these panicked customers seek reassurance, they encounter an automated chatbot loop that cannot resolve transaction blocks. This silence destroys trust, pushing long-time users to abandon the platform and actively warn others against using it for any real financial needs.",
       "impact": [
         {
           "value": "21",
@@ -100,7 +100,7 @@
         },
         {
           "value": "v4.23.0",
-          "label": "earliest in window"
+          "label": "earliest version seen"
         }
       ],
       "evidence": [
@@ -122,7 +122,7 @@
       ],
       "recommendation": {
         "cost": "These are active, long-term users experiencing sudden capital immobilization who state they are deleting the app and moving to competing financial services out of safety concerns.",
-        "action": "Display explicit, real-time clearing status breakdowns and estimated arrival timestamps directly inside the transaction history view.",
+        "action": "Show a clear, live status for every transfer — where the money is now and when it will arrive — right inside the payment history.",
         "rationale": "The core anger stems from absolute opacity rather than just the banking hours themselves; letting users see exactly where their money sits defuses panic before they resort to reviews.",
         "effort": "fix",
         "signal": "One-star reviews stop mentioning missing transfer funds and unresolved pending statuses."
@@ -144,7 +144,7 @@
         },
         {
           "value": "v4.31.0",
-          "label": "earliest in window"
+          "label": "earliest version seen"
         }
       ],
       "evidence": [
@@ -188,7 +188,7 @@
         },
         {
           "value": "v4.34.0",
-          "label": "earliest in window"
+          "label": "earliest version seen"
         }
       ],
       "evidence": [

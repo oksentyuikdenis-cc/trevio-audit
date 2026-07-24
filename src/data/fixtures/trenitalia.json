@@ -107,7 +107,7 @@
         },
         {
           "value": "v13.200.2",
-          "label": "earliest in window"
+          "label": "earliest version seen"
         }
       ],
       "evidence": [
@@ -129,8 +129,8 @@
       ],
       "recommendation": {
         "cost": "These are long-term daily commuters and frequent travellers who relied on the app for years, now expressing deep frustration and abandoning the platform for station kiosks or competitors.",
-        "action": "Audit and refactor the network request payloads and UI thread bottlenecks introduced in the latest layout update to eliminate infinite loading loops and server error popups.",
-        "rationale": "Reviewers explicitly contrast the current broken state with the previous version that functioned smoothly, indicating that the underlying transit data services are sound but the new client-side architecture and UI rendering are failing.",
+        "action": "Profile and fix the data-loading and screen-rendering slowdowns the latest redesign introduced, so the endless loading spinners and error pop-ups stop.",
+        "rationale": "Reviewers explicitly contrast today's broken app with the previous version that worked smoothly — the train data behind it is fine, so what is failing is the new app itself, not the service.",
         "effort": "rework",
         "signal": "Support tickets and low-star reviews stop citing internal server errors and infinite loading spinners during basic navigation."
       }
@@ -151,7 +151,7 @@
         },
         {
           "value": "v13.200.0",
-          "label": "earliest in window"
+          "label": "earliest version seen"
         }
       ],
       "evidence": [
@@ -195,7 +195,7 @@
         },
         {
           "value": "v12.1000.0",
-          "label": "earliest in window"
+          "label": "earliest version seen"
         }
       ],
       "evidence": [

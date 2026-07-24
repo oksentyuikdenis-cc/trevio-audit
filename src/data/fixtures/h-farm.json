@@ -85,7 +85,7 @@
       "id": "administrative-onboarding-neglect",
       "title": "The total absence of structured onboarding leaves new hires stranded without basic training or guidance.",
       "scope": "5 of 234 reviews",
-      "summary": "New employees arrive to find no formalized onboarding process beyond receiving a laptop, forcing them to learn entirely through osmosis. This chaotic introduction contrasts sharply with the polished external image of the institution. Basic administrative processes and reception inquiries are handled poorly, creating unnecessary friction for both staff and visitors. Operational disorganization at the entry stage wastes valuable time and dampens initial enthusiasm.",
+      "summary": "New employees arrive to find no formalized onboarding process beyond receiving a laptop, forcing them to learn entirely through osmosis. This chaotic introduction contrasts sharply with the polished external image of the institution. Basic administrative processes and reception inquiries are handled poorly, creating unnecessary friction for both staff and visitors.",
       "impact": [
         {
           "value": "5",
@@ -118,7 +118,7 @@
         }
       ],
       "recommendation": {
-        "cost": "these are new hires experiencing immediate regret and questioning their decision to join upon realizing the organization completely lacks basic professional infrastructure on day one",
+        "cost": "These are new hires questioning their decision on the very first day, when they find the organisation has none of the professional infrastructure its brand promises.",
         "action": "Deploy a standardized two-week onboarding checklist and assign a dedicated mentor to every incoming employee.",
         "rationale": "Relying on osmosis wastes weeks of productivity and signals to incoming talent that operational standards do not match the brand's outward ambition.",
         "effort": "setting",
@@ -134,10 +134,6 @@
         {
           "value": "6",
           "label": "reviews"
-        },
-        {
-          "value": "0%",
-          "label": "rated 1 star"
         },
         {
           "value": "6%",
@@ -178,10 +174,6 @@
         {
           "value": "5",
           "label": "reviews"
-        },
-        {
-          "value": "0%",
-          "label": "rated 1 star"
         },
         {
           "value": "6%",

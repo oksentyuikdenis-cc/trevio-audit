@@ -94,7 +94,7 @@
         },
         {
           "value": "v1.7.273",
-          "label": "earliest in window"
+          "label": "earliest version seen"
         }
       ],
       "evidence": [
@@ -138,11 +138,11 @@
         },
         {
           "value": "↑3×",
-          "label": "vs. first half of window"
+          "label": "vs. earlier reviews"
         },
         {
           "value": "v1.7.281",
-          "label": "earliest in window"
+          "label": "earliest version seen"
         }
       ],
       "evidence": [
@@ -186,7 +186,7 @@
         },
         {
           "value": "v1.7.281",
-          "label": "earliest in window"
+          "label": "earliest version seen"
         }
       ],
       "evidence": [
