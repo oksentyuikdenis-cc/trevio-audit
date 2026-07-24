@@ -103,9 +103,10 @@ export function LiveAudit() {
     // leave the previous audit alone rather than implying it is the answer to
     // what was just typed.
     if (!canRun) {
+      const names = chips.map((c) => c.productName).join(', ')
       setError(
-        `No audit of “${query}” travels with this page. The three above were computed in advance; ` +
-          `auditing anything else runs the pipeline live, which needs the run server.`,
+        `No audit of “${query}” travels with this page — try ${names}. ` +
+          `Auditing anything else runs the pipeline live, which needs the run server on a laptop.`,
       )
       return
     }
@@ -194,6 +195,23 @@ export function LiveAudit() {
           <Button onClick={() => run(product)}>{running ? 'Reading…' : 'Read it'}</Button>
         </div>
 
+        {/* Response, immediately under the input that produced it — above the
+            chips, so chip wrapping cannot push it down the page. It was
+            rendered two hundred pixels below, past the masthead and ledger, so
+            a reader who typed a name we do not carry saw the card sit unchanged
+            and concluded the button was dead. The answer belongs where the
+            question was asked. */}
+        {error && !running && (
+          <p className="audit__reply audit__reply--error" data-motion="rise" role="status">
+            {error}
+          </p>
+        )}
+        {running && log.length > 0 && (
+          <p className="audit__reply" data-motion="rise" role="status">
+            {log[log.length - 1]}
+          </p>
+        )}
+
         {chips.length > 0 && (
           <p className="audit__suggest" data-motion="rise">
             <span>Instant:</span>
@@ -214,7 +232,7 @@ export function LiveAudit() {
             <span>
               {canRun
                 ? '— anything else runs live, in about a minute.'
-                : '— these three are computed and travel with the page. Auditing anything else needs the run server.'}
+                : '— computed in advance and travelling with the page. Auditing anything else needs the run server.'}
             </span>
           </p>
         )}
@@ -307,6 +325,10 @@ export function LiveAudit() {
           </p>
         )}
 
+        {/* The full pipeline log stays here, below the masthead, where it reads
+            as the run's transcript. The single most recent line is echoed up by
+            the search bar while running, and the error moved up there too — this
+            block is the record, not the response. */}
         {log.length > 0 && (
           <ul className="audit__log" aria-live="polite">
             {log.map((line, i) => (
@@ -314,8 +336,6 @@ export function LiveAudit() {
             ))}
           </ul>
         )}
-
-        {error && <p className="audit__error">{error}</p>}
 
         {!lead ? (
           // A result with no insights is a real outcome — a corpus can fail to

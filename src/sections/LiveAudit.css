@@ -161,6 +161,26 @@
   font-size: var(--mur-t-small);
 }
 
+/* The immediate response to a search, directly under the field.
+   Boxed so it reads as an answer to what was just typed rather than as body
+   copy — the previous error sat two hundred pixels down, past the masthead,
+   and a reader who typed an unbaked name saw the card sit still and thought
+   the button was dead. */
+.audit__reply {
+  margin: calc(-1 * var(--mur-sp-2)) 0 var(--mur-sp-4);
+  padding: var(--mur-sp-3);
+  border-radius: var(--mur-radius, 10px);
+  background: var(--mur-surface, rgba(0, 0, 0, 0.03));
+  color: var(--mur-text-body);
+  font-size: var(--mur-t-small);
+  line-height: 1.5;
+}
+
+.audit__reply--error {
+  border-left: 2px solid var(--mur-accent);
+  color: var(--mur-text);
+}
+
 /* ---------- Suggested action ----------
    Set apart with a rule and a label rather than styled to match the summary.
    The whole card is an argument that every statement should show what kind of

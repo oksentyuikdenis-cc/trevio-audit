@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "productName": "H-FARM",
+    "volumeTotal": 186,
+    "itemsRead": 208,
+    "dropped": [
+      {
+        "reason": "older than 240 days",
+        "count": 21
+      },
+      {
+        "reason": "too short to carry a claim",
+        "count": 1
+      }
+    ],
+    "windowDays": 234,
+    "generatedAt": "2026-07-13T10:05:44Z",
+    "mode": "cached",
+    "model": "Gemini gemini-flash-lite-latest · US (and trains on free-tier prompts)"
+  },
+  "sources": [
+    {
+      "id": "paste",
+      "name": "Pasted feedback",
+      "detail": "manual",
+      "share": 0.9677
+    },
+    {
+      "id": "googlemaps",
+      "name": "Google Maps reviews",
+      "detail": "Maps",
+      "share": 0.0323
+    }
+  ],
+  "clusters": [
+    {
+      "id": "uncompetitive-compensation",
+      "label": "Below-market salaries and unreached equity",
+      "weight": 0.043,
+      "sentiment": "negative",
+      "promoted": true
+    },
+    {
+      "id": "leadership-communication",
+      "label": "Opaque leadership decisions and chaotic execution",
+      "weight": 0.0376,
+      "sentiment": "negative",
+      "promoted": true
+    },
+    {
+      "id": "career-progression",
+      "label": "Stalled promotions and absent onboarding",
+      "weight": 0.043,
+      "sentiment": "negative",
+      "promoted": true
+    },
+    {
+      "id": "academic-expectations",
+      "label": "Cost-to-quality gap and aggressive marketing",
+      "weight": 0.0215,
+      "sentiment": "negative",
+      "promoted": false
+    },
+    {
+      "id": "campus-experience",
+      "label": "Modern campus infrastructure and practical learning",
+      "weight": 0.8495,
+      "sentiment": "positive",
+      "promoted": false
+    }
+  ],
+  "insights": [
+    {
+      "id": "salary-retention-risk",
+      "title": "Senior operational talent is walking away due to severe wage disparity and illusory equity.",
+      "scope": "8 of 186 reviews",
+      "summary": "Experienced employees are quietly departing because fixed compensation significantly lags behind broader market standards. Colleagues performing identical roles elsewhere earn substantially higher wages, rendering the local compensation model uncompetitive. Furthermore, promised equity packages fail to deliver real financial value because exercise pricing remains disconnected from realistic company valuations. This creates a cycle where only incoming junior staff remain until they outgrow their starting rates.",
+      "impact": [
+        {
+          "value": "8",
+          "label": "reviews"
+        },
+        {
+          "value": "0%",
+          "label": "rated 1 star"
+        },
+        {
+          "value": "12%",
+          "label": "of all negative feedback"
+        }
+      ],
+      "evidence": [
+        {
+          "name": "PA",
+          "quote": "Salaries are genuinely penalizing. You could do proper market salary analysis and align. Instead, there's little interest in retaining talent. I have friends doing my job and…",
+          "source": "Pasted"
+        },
+        {
+          "name": "PA",
+          "quote": "Salaries are an affront compared to the market. Friends in similar companies earn double. H-Farm hires young inexperienced people and pays them little until they leave. It's…",
+          "source": "Pasted"
+        },
+        {
+          "name": "PA",
+          "quote": "Equity promises that mean nothing if there's no exit. They told me 'you'll have equity worth millions' but the exercise price is impossible given the valuation. It's a carrot you…",
+          "source": "Pasted"
+        }
+      ],
+      "recommendation": {
+        "cost": "these are senior staff members reaching the exact moment they realize loyalty to the mission does not pay bills, and they are accepting competing offers.",
+        "action": "Conduct a comprehensive base salary adjustment for existing operating roles to align with regional median market rates.",
+        "rationale": "Reviewers explicitly note that passion for the mission is the sole remaining tether, meaning standard cost-of-living adjustments will no longer prevent senior departures.",
+        "effort": "rework",
+        "signal": "voluntary turnover rates among senior staff stabilize and exit interviews stop citing pay disparity."
+      }
+    },
+    {
+      "id": "leadership-opacity",
+      "title": "Operational disconnect and opaque communication leave teams working in the dark.",
+      "scope": "7 of 186 reviews",
+      "summary": "Senior leadership remains isolated from daily operations, resulting in abrupt decisions that catch teams entirely off guard. Employees frequently discover critical project cancellations or strategic shifts through informal channels or missed meeting invitations. This lack of transparency forces departments to operate without clear direction, breeding widespread frustration and dismantling internal trust.",
+      "impact": [
+        {
+          "value": "7",
+          "label": "reviews"
+        },
+        {
+          "value": "0%",
+          "label": "rated 1 star"
+        },
+        {
+          "value": "6%",
+          "label": "of all negative feedback"
+        }
+      ],
+      "evidence": [
+        {
+          "name": "PA",
+          "quote": "Communication is a nightmare. Leadership doesn't share strategies, doesn't explain decisions, doesn't listen to feedback. You feel like you're working in the dark. Sometimes you…",
+          "source": "Pasted"
+        },
+        {
+          "name": "PA",
+          "quote": "Senior management is absent from operations. They don't know what's happening in the field. Decisions made by people who don't understand real problems. It's frustrating getting…",
+          "source": "Pasted"
+        },
+        {
+          "name": "PA",
+          "quote": "Good, but there are communication issues. Sometimes you don't understand senior decisions until it's too late to impact them. More transparency would help. Otherwise, it's a nice…",
+          "source": "Pasted"
+        }
+      ],
+      "recommendation": {
+        "cost": "these are motivated professionals hitting the point of exhaustion from chaotic management, leading them to disengage entirely from strategic goals.",
+        "action": "Establish a mandatory weekly all-hands briefing and publish written documentation for all strategic pivots before project changes occur.",
+        "rationale": "The core issue is not simply a lack of meetings, but the absence of documented decisions and transparent channels reaching beyond the immediate executive circle.",
+        "effort": "setting",
+        "signal": "internal feedback surveys show positive ratings for leadership visibility and transparency."
+      }
+    },
+    {
+      "id": "onboarding-and-advancement",
+      "title": "The absence of structured onboarding and merit frameworks creates systemic instability.",
+      "scope": "8 of 186 reviews",
+      "summary": "New hires arrive to find zero formal training, receiving only a laptop on their first day and expected to learn entirely through osmosis. Compounding this void, internal promotions stall indefinitely without clear merit criteria or transparent performance tracking. This dual neglect leaves incoming employees unsupported and veterans waiting years for unconfirmed titles, driving continuous churn.",
+      "impact": [
+        {
+          "value": "8",
+          "label": "reviews"
+        },
+        {
+          "value": "0%",
+          "label": "rated 1 star"
+        },
+        {
+          "value": "9%",
+          "label": "of all negative feedback"
+        }
+      ],
+      "evidence": [
+        {
+          "name": "PA",
+          "quote": "Too many unkept promises. You're hired with promises of titles and responsibility that never materialize. I've seen people wait two years for a promotion that was never confirmed.",
+          "source": "Pasted"
+        },
+        {
+          "name": "PA",
+          "quote": "Excessive turnover. I see people leaving continuously. Senior people especially. This creates instability. New hires often lack experience to fill the gaps.",
+          "source": "Pasted"
+        },
+        {
+          "name": "PA",
+          "quote": "Complete lack of onboarding. First day? They give you a laptop and that's it. Who trains you? Nobody. You learn through osmosis or you don't. It's not professional for a company…",
+          "source": "Pasted"
+        }
+      ],
+      "recommendation": {
+        "cost": "these are dedicated team members giving up after years of waiting for promised advancement, concluding that internal growth is entirely blocked.",
+        "action": "Implement a formal onboarding curriculum paired with transparent, periodic performance review cycles and explicit promotion criteria.",
+        "rationale": "The reviews highlight structural neglect rather than simple impatience; individuals are willing to work intensely if clear growth paths and baseline training exist.",
+        "effort": "rework",
+        "signal": "new hires complete structured training milestones within their first month and internal promotion timelines become predictable."
+      }
+    }
+  ]
+}

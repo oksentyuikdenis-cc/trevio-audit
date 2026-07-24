@@ -29,6 +29,7 @@ import type { Source } from './sources'
 import fixture from './fixtures/trenitalia.json'
 import satispay from './fixtures/satispay.json'
 import notion from './fixtures/notion.json'
+import hfarm from './fixtures/h-farm.json'
 
 export interface AuditMeta {
   productName: string
@@ -80,6 +81,7 @@ export const CACHED_AUDIT = fixture as AuditResult
  */
 const BAKED: Record<string, AuditResult> = {
   trenitalia: fixture as AuditResult,
+  'h-farm': hfarm as unknown as AuditResult,
   satispay: satispay as unknown as AuditResult,
   notion: notion as unknown as AuditResult,
 }
