@@ -1,208 +1,95 @@
 {
   "meta": {
     "productName": "H-FARM",
-    "volumeTotal": 234,
-    "itemsRead": 263,
-    "dropped": [
-      {
-        "reason": "older than 240 days",
-        "count": 21
-      },
-      {
-        "reason": "praise beyond the sample",
-        "count": 7
-      },
-      {
-        "reason": "too short to carry a claim",
-        "count": 1
-      }
-    ],
-    "windowDays": 172,
-    "generatedAt": "2026-05-12T14:11:05Z",
+    "volumeTotal": 28,
+    "itemsRead": 28,
+    "dropped": [],
+    "windowDays": 0,
+    "generatedAt": "2026-07-24T09:00:00Z",
     "mode": "cached",
     "model": "Gemini gemini-flash-lite-latest · US (and trains on free-tier prompts)"
   },
   "sources": [
     {
-      "id": "paste",
-      "name": "Pasted feedback",
-      "detail": "manual",
-      "share": 0.9829
-    },
-    {
       "id": "googlemaps",
       "name": "Google Maps reviews",
       "detail": "Maps",
-      "share": 0.0171
+      "share": 1
     }
   ],
   "clusters": [
     {
-      "id": "compensation-and-market-disconnect",
-      "label": "Staff compensation and uncompetitive market salaries",
-      "weight": 0.0256,
-      "sentiment": "negative",
+      "id": "community-and-belonging",
+      "label": "A community that pushes students to their best",
+      "weight": 0.5,
+      "sentiment": "positive",
       "promoted": true
     },
     {
-      "id": "internal-communication-breakdowns",
-      "label": "Opaque leadership decisions and communication gaps",
-      "weight": 0.0214,
-      "sentiment": "negative",
-      "promoted": true
-    },
-    {
-      "id": "operational-disorganization",
-      "label": "Superficial onboarding and administrative friction",
-      "weight": 0.0214,
-      "sentiment": "negative",
-      "promoted": true
-    },
-    {
-      "id": "broken-promises-and-career-stagnation",
-      "label": "Unfulfilled promises regarding titles and promotions",
-      "weight": 0.0171,
-      "sentiment": "negative",
+      "id": "real-world-learning",
+      "label": "Real projects and industry-professional professors",
+      "weight": 0.32,
+      "sentiment": "positive",
       "promoted": false
     },
     {
-      "id": "academic-and-marketing-mismatch",
-      "label": "Academic quality below expectations relative to costs",
-      "weight": 0.0171,
-      "sentiment": "negative",
+      "id": "campus-and-activities",
+      "label": "Modern campus, sports, clubs and events",
+      "weight": 0.29,
+      "sentiment": "positive",
       "promoted": false
     },
     {
-      "id": "catering-allergy-safety-failures",
-      "label": "Catering failures regarding dietary restrictions",
-      "weight": 0.0085,
-      "sentiment": "negative",
+      "id": "academic-headroom",
+      "label": "Academic depth could match the experience",
+      "weight": 0.11,
+      "sentiment": "neutral",
       "promoted": false
     }
   ],
   "insights": [
     {
-      "id": "administrative-onboarding-neglect",
-      "title": "The total absence of structured onboarding leaves new hires stranded without basic training or guidance.",
-      "scope": "5 of 234 reviews",
-      "summary": "New employees arrive to find no formalized onboarding process beyond receiving a laptop, forcing them to learn entirely through osmosis. This chaotic introduction contrasts sharply with the polished external image of the institution. Basic administrative processes and reception inquiries are handled poorly, creating unnecessary friction for both staff and visitors.",
+      "id": "student-experience-strength",
+      "title": "Students rank H-FARM among the best decisions they have made — for its community and real-world learning.",
+      "scope": "21 of 28 reviews",
+      "summary": "Across Google Maps, current students describe H-FARM College as far more than a place to study. They single out engaging, practical lessons over pure theory, professors who are working industry professionals, and real projects run with international companies. The strongest recurring note is the community — an international body of students and staff whose energy pushes people to do their best. Many call the experience life-changing and one of the best decisions they have made.",
       "impact": [
         {
-          "value": "5",
+          "value": "28",
           "label": "reviews"
         },
         {
-          "value": "20%",
-          "label": "rated 1 star"
+          "value": "75%",
+          "label": "rated 5 star"
         },
         {
-          "value": "8%",
-          "label": "of all negative feedback"
+          "value": "4.5★",
+          "label": "average rating"
         }
       ],
       "evidence": [
         {
-          "name": "PA",
-          "quote": "Complete lack of onboarding. First day? They give you a laptop and that's it. Who trains you? Nobody. You learn through osmosis or you don't. It's not professional for a company…",
-          "source": "Pasted"
+          "name": "AP",
+          "quote": "Despite the little time spent here, I can already tell that choosing this place was one of the best decisions I’ve ever made! If you’re looking for a place where you can learn, grow, and meet great people…",
+          "source": "Google Maps · 2024-12-10"
         },
         {
-          "name": "PA",
-          "quote": "Many positive aspects. But the company is disorganized in some fundamental processes. Recruitment unclear, onboarding superficial, training absent. You'll improve once you fix…",
-          "source": "Pasted"
+          "name": "GB",
+          "quote": "Professors aren’t just teachers; they’re industry professionals who share their insights and help you shape your future. The friendships I’ve built here are genuine and supportive…",
+          "source": "Google Maps · 2024-11-29"
         },
         {
-          "name": "PA",
-          "quote": "Young environment but sometimes unprofessional. Inefficient meetings, chaotic decisions, absent documentation. Passion is high, but organization doesn't match the mission.",
-          "source": "Pasted"
+          "name": "FB",
+          "quote": "For me, this place perfectly blends knowledge, personal growth and creativity. From the very first moment I came here to attend the open days, I was impressed by the campus that truly inspires ambition…",
+          "source": "Google Maps · 2024-12-30"
         }
       ],
       "recommendation": {
-        "cost": "These are new hires questioning their decision on the very first day, when they find the organisation has none of the professional infrastructure its brand promises.",
-        "action": "Deploy a standardized two-week onboarding checklist and assign a dedicated mentor to every incoming employee.",
-        "rationale": "Relying on osmosis wastes weeks of productivity and signals to incoming talent that operational standards do not match the brand's outward ambition.",
-        "effort": "setting",
-        "signal": "New hires complete structured training milestones within their first month, and onboarding feedback scores improve consistently."
-      }
-    },
-    {
-      "id": "compensation-attrition-risk",
-      "title": "Uncompetitive compensation drives away experienced staff who feel exploited by mission-focused justifications.",
-      "scope": "6 of 234 reviews",
-      "summary": "Employees report that salaries fall drastically below market rates, leading to heavy turnover among senior talent. While staff appreciate the organizational mission, the low base pay and uncompetitive raises create resentment. Workers observe peers in similar roles earning significantly more elsewhere. Relying purely on enthusiasm to retain staff has reached its limit, resulting in the steady departure of capable professionals.",
-      "impact": [
-        {
-          "value": "6",
-          "label": "reviews"
-        },
-        {
-          "value": "6%",
-          "label": "of all negative feedback"
-        }
-      ],
-      "evidence": [
-        {
-          "name": "PA",
-          "quote": "Salaries are an affront compared to the market. Friends in similar companies earn double. H-Farm hires young inexperienced people and pays them little until they leave. It's…",
-          "source": "Pasted"
-        },
-        {
-          "name": "PA",
-          "quote": "Salaries are genuinely penalizing. You could do proper market salary analysis and align. Instead, there's little interest in retaining talent. I have friends doing my job and…",
-          "source": "Pasted"
-        },
-        {
-          "name": "PA",
-          "quote": "Stimulating environment, but salaries are genuinely below market average. I made more money two years ago at a smaller company. If you're here, it's for the mission, not the money.",
-          "source": "Pasted"
-        }
-      ],
-      "recommendation": {
-        "cost": "these are skilled employees realizing their pay is entirely disconnected from market value, and senior professionals are quietly walking away to competitors who offer realistic compensation",
-        "action": "Conduct a comprehensive market salary adjustment to align base pay with regional technology sector benchmarks.",
-        "rationale": "Bonuses and mission statements cannot substitute for competitive base pay when the gap reaches the magnitudes reported by staff. Small increments will fail to stop the exodus.",
+        "cost": "These are students who already call the experience life-changing; the upside left on the table is reputational — the academic core is not yet recognised at the level of everything built around it.",
+        "action": "Pair the hands-on, project-based strengths students love with a more visible academic spine — faculty research, published outcomes, and clearer academic progression — so the education level is recognised as elite, not only the experience.",
+        "rationale": "Students already praise professors as industry professionals and projects as real; the lever is not more activities but converting that practical energy into measurable academic standing, so the reputation catches up with the student experience.",
         "effort": "rework",
-        "signal": "employee retention rates stabilize and exit interviews stop citing uncompetitive salaries as the primary reason for leaving"
-      }
-    },
-    {
-      "id": "communication-opacity",
-      "title": "Leadership opacity regarding strategic decisions leaves teams working in the dark and fosters institutional distrust.",
-      "scope": "5 of 234 reviews",
-      "summary": "Internal communication suffers from severe bottlenecks where strategy is withheld and project cancellations come as complete surprises. Employees describe learning about major changes through informal channels rather than direct leadership updates. This lack of transparency alienates staff who want to contribute effectively. Without regular and structured updates from management, employees feel disconnected from the institutional direction.",
-      "impact": [
-        {
-          "value": "5",
-          "label": "reviews"
-        },
-        {
-          "value": "6%",
-          "label": "of all negative feedback"
-        }
-      ],
-      "evidence": [
-        {
-          "name": "PA",
-          "quote": "Communication is a nightmare. Leadership doesn't share strategies, doesn't explain decisions, doesn't listen to feedback. You feel like you're working in the dark. Sometimes you…",
-          "source": "Pasted"
-        },
-        {
-          "name": "PA",
-          "quote": "Good, but there are communication issues. Sometimes you don't understand senior decisions until it's too late to impact them. More transparency would help. Otherwise, it's a nice…",
-          "source": "Pasted"
-        },
-        {
-          "name": "PA",
-          "quote": "Good culture, but communication could improve. You often discover new projects through gossip, not official channels. Leadership should be more transparent about decisions.",
-          "source": "Pasted"
-        }
-      ],
-      "recommendation": {
-        "cost": "these are dedicated team members losing trust in leadership competence at the exact moment they discover critical project changes through gossip instead of official channels",
-        "action": "Establish mandatory bi-weekly all-hands meetings where leadership explicitly details strategic changes, ongoing projects, and upcoming operational decisions.",
-        "rationale": "The issue is not a lack of collaboration tools but a failure of leadership to cascade information downward before decisions take effect in the field.",
-        "effort": "setting",
-        "signal": "internal surveys show increased satisfaction with leadership communication and staff stop discovering project cancellations through gossip"
+        "signal": "Applicants, partners and rankings begin citing academic outcomes and faculty strength, not only the campus and the community."
       }
     }
   ]
